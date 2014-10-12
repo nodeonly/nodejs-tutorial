@@ -22,3 +22,6 @@ http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express
 
 
 http://cwbuecheler.com/web/tutorials/2014/restful-web-app-node-express-mongodb/
+
+
+http://coenraets.org/blog/2012/10/creating-a-rest-api-using-node-js-express-and-mongodb/
