@@ -39,6 +39,21 @@ running test: ok
 ```
 
 
+### 使用msgpack序列化
+
+A space-efficient object serialization library for NodeJS
+
+https://github.com/pgriess/node-msgpack
+
+
+```
+  var msgpack = require('msgpack');
+
+  var o = {"a" : 1, "b" : 2, "c" : [1, 2, 3]};
+  var b = msgpack.pack(o);
+  var oo = msgpack.unpack(b);
+```
+
 ## url
 http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4#route-middleware
 
