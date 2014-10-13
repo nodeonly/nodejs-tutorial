@@ -14,9 +14,18 @@ nodejs-tutorial
 ## db
 
 
+### 模型验证
+
+Object schema description language and validator for JavaScript objects.
+
+https://github.com/hapijs/joi
 
 
 
+
+
+
+## url
 http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4#route-middleware
 
 
