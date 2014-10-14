@@ -25,7 +25,7 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 	
 项目创建完毕，文件结构如下:
 
-![Mou icon](img/expressimg1.jpg)
+![Mou icon](./img/expressimg1.jpg)
 
 打开package.json，可以看到依赖的模块，执行命令来下载依赖的模块:
 
@@ -37,7 +37,7 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 	
 下载依赖模块成功后，可以看到在node_modules文件夹下多出了这些模块:
 
-![Mou icon](img/expressimg2.jpg)
+![Mou icon](./img/expressimg2.jpg)
 
 回到app.js层级，执行:
 
@@ -49,7 +49,7 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 
 大概会缺失5个模块左右，模块全部安装完成，浏览器则会输出:
 
-![Mou icon](img/expressimg3.jpg)
+![Mou icon](./img/expressimg3.jpg)
 
 完毕,说明express安装成功.
 
@@ -95,6 +95,12 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 - json
 
 ## 实践积累
+
+试着说明package.json的众多方面
+
+- `npm install --save`  vs `npm install --save-dev`
+- `npm start` vs `npm test` (scripts自定义)
+- 如何写一个npm，以及发布
 
 
 ## 总结

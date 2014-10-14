@@ -137,6 +137,85 @@ https://github.com/pgriess/node-msgpack
 https://github.com/mikeal/request
 
 
+#### post
+
+var formData = {
+  my_field: 'my_value',
+  my_buffer: new Buffer([1, 2, 3]),
+  my_file: fs.createReadStream(__dirname + '/unicycle.jpg'),
+  remote_file: request(remoteFile)
+};
+request.post({url:'http://service.com/upload', formData: formData}, function optionalCallback(err, httpResponse, body) {
+  if (err) {
+    return console.error('upload failed:', err);
+  }
+  console.log('Upload successful!  Server responded with:', body);
+});
+
+### node 推送
+
+https://github.com/argon/node-apn/wiki/Projects,-Applications,-and-Companies-Using-Node-apn
+
+https://github.com/rs/pushd
+
+
+#### 如何去掉pem的密码
+
+```
+➜  conf git:(master) ✗   openssl rsa -in key.pem -out keyout.pem
+Enter pass phrase for key.pem:
+writing RSA key
+```
+
+
+### about options
+
+```	
+this.options = {
+		cert: 'cert.pem',
+		key: 'key.pem',
+		ca: null,
+		pfx: null,
+		passphrase: null,
+		production: (process.env.NODE_ENV === "production"),
+		address: null,
+		port: 2195,
+		rejectUnauthorized: true,
+		enhanced: true,
+		cacheLength: 1000,
+		autoAdjustCache: true,
+		maxConnections: 1,
+		connectTimeout: 10000,
+		connectionTimeout: 0,
+		connectionRetryLimit: 10,
+		buffersNotifications: true,
+		fastMode: false,
+		legacy: false,
+		disableNagle: false,
+		disableEPIPEFix: false
+	};
+
+	for (var key in options) {
+		if (options[key] == null) {
+			debug("Option [" + key + "] set to null. This may cause unexpected behaviour.");
+		}
+	}
+
+	util.extend(this.options, options);
+
+	
+	if (this.options.gateway != null) {
+		this.options.address = this.options.gateway;
+	}
+	
+```
+
+说明
+
+- this.options = {}是初始化默认选项
+- util.extend(this.options, options);和jq的$.extend是类似的。
+- if (this.options.gateway != null)这段是做更多的选项判断，比如选项间的互斥等。
+
 ## url
 http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4#route-middleware
 
