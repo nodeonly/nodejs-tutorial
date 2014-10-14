@@ -9,7 +9,9 @@ http://expressjs.com/
 
 ## 阅读文档
 ### getting start
+
 ### guide
+
 ### 知道如何查api文档
 
 ## 核心概念
@@ -35,6 +37,9 @@ http://expressjs.com/
 - body
 - params
 - query
+
+各自举例
+
 
 ### response返回
 
