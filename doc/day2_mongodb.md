@@ -12,7 +12,7 @@ http://www.mongodb.org/
 
 
 ## 了解mongoose（ORM）用法
-
+http://mongoosejs.com/docs/
 
 ## 高级
 
