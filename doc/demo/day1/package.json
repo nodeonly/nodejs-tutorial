@@ -1,6 +1,6 @@
 {
-  "name": "express",
-  "version": "0.0.0",
+  "name": "yyyy",
+  "version": "0.0.1",
   "description": "express",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,7 @@
   ],
   "author": "kezhi",
   "license": "3000",
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.9.7"
+  }
 }
