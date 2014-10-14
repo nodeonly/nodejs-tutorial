@@ -4,6 +4,15 @@ nodejs-tutorial
 
 主要是用nodejs+mongodb构建api server
 
+## Lession
+
+MEAN
+
+- day1: Express
+- day2: Mongo DB
+- day3: Node
+- day4: Angualar
+
 
 ## 基础
 
@@ -53,6 +62,12 @@ https://github.com/pgriess/node-msgpack
   var b = msgpack.pack(o);
   var oo = msgpack.unpack(b);
 ```
+
+
+### 发送http请求
+
+https://github.com/mikeal/request
+
 
 ## url
 http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4#route-middleware
