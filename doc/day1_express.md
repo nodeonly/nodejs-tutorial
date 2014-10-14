@@ -7,6 +7,15 @@ http://expressjs.com/
 - 如何安装
 - 如何使用generator
 
+首先确保已经安装node和npm，新建文件夹expressInstall,在此文件夹下
+执行命令npm install express -save;如果出现之下情况:
+
+![Mou icon](img/expressImg1.jpg)
+
+执行命令sudo npm install express -save;安装成功:
+
+![Mou icon](img/expressImg2.jpg)
+
 ## 阅读文档
 ### getting start
 
