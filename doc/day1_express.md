@@ -93,9 +93,9 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 
 ### 了解http协议
 
-### 如何实现get请求
+### 如何处理get请求
 
-### 如何实现post请求
+### 如何处理post请求
 
 ### 如何实现文件上传
 
