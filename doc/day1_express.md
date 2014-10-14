@@ -95,6 +95,70 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 
 ### 如何处理get请求
 
+我们可以在一个html文件里向端口发送get请求，首先要在访问http://localhost:3000下，端口能向浏览器输出此html，默认情况下，express是会输出pubblic文件夹下的index.html文件，在没有特别指明的情况下，所以注释掉:
+
+	//app.use('/', routes);
+	
+这样在get请求的url为'/'时，express会找到pubblic文件夹;我们可以自定义路由:
+
+	//自定义路由
+	var myHttpGet = require('./routes/getserver');
+	app.use('/getserver', myHttpGet);
+	
+当get请求的url为/getserver时，express会执行myHttpGet模块，在routes文件夹下实现myHttpGet模块:
+
+	var express = require('express');
+	var router = express.Router();
+
+	/* GET http.*/
+	router.get('/', function(req, res) {
+		var sUrl = req.url;
+		var arr = sUrl.split('?');
+		var arrReq = arr[1].split('&');
+		var resJson = {};
+
+		for(var i=0; i<arrReq.length; i++){
+			//['xx=xx','xx=xx']
+			var newarr = arrReq[i].split('=');
+			var attr = newarr[0];
+			var value = newarr[1];
+			resJson[attr] = value;
+		};
+		res.send(resJson);
+	});
+
+	module.exports = router;
+	
+当我们在html里用ajax向此路由发送get请求时，我们可以取到参数，做一些处理后，用:
+
+	res.send(resJson);
+	
+返回给ajax对象:
+
+
+		oGetBtn.onclick = function(){	
+
+			 $.ajax({
+	             type: "GET",
+	             url: "http://localhost:3000/getserver",
+	             data: {
+	             	'method':'GET',
+	             	'name':'rainBow',
+	             	'sex':'man'
+	             },
+	             dataType: "json",
+	             success: function(data){
+                    var str = JSON.stringify(data);
+					oResBox.innerHTML = str;
+                  }
+	         });
+		};
+		
+点击GET按钮发送GET请求，并把发出去的参数整理成json格式并返回:
+
+![Mou icon](./images/expressimg4.jpg)
+	
+
 ### 如何处理post请求
 
 ### 如何实现文件上传

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title> 
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<script type="text/javascript" src="javascripts/jquery.js"></script>
+	<script>
+	window.onload = function(){
+
+		var oGetBtn = document.getElementById('get');
+		var oPostBtn = document.getElementById('post');
+		var oResBox = document.getElementById('res');
+
+		oGetBtn.onclick = function(){	
+
+			 $.ajax({
+	             type: "GET",
+	             url: "http://localhost:3000/getserver",
+	             data: {
+	             	'method':'GET',
+	             	'name':'rainBow',
+	             	'sex':'man'
+	             },
+	             dataType: "json",
+	             success: function(data){
+                    var str = JSON.stringify(data);
+					oResBox.innerHTML = str;
+                  }
+	         });
+		};
+
+		oPostBtn.onclick = function(){
+			$.ajax({
+	             type: "POST",
+	             url: "http://localhost:3000/getserver",
+	             data: {
+	             	'method':'POST',
+	             	'name':'rainBow',
+	             	'sex':'man'
+	             },
+	             dataType: "json",
+	             success: function(data){
+	                var str = JSON.stringify(data);
+					oResBox.innerHTML = str;
+	              }
+	         });
+		};
+	};
+	</script>
+</head>
+<body>	
+	<header>ExpressHttpTest</header>
+	<ul>
+		<li id="get">GET</li>
+		<li id="post">POST</li>
+	</ul>
+	<div id="res" class="res">
+		
+	</div>
+</body>
+</html>
