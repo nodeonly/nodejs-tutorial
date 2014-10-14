@@ -2,79 +2,40 @@ nodejs-tutorial
 ===============
 
 
-主要是用nodejs+mongodb构建api server
+主要是用nodejs+mongodb构建web server
 
 ## Lession
 
 MEAN
 
-- day1: Express
-- day2: Mongo DB
-- day3: Node
-- day4: Angualar
-
-
-## 基础
-
-
-## node express
-
-
-## db
-
-
-### 模型验证
-
-Object schema description language and validator for JavaScript objects.
-
-https://github.com/hapijs/joi
+- day1: [Express](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day1_express.md)
+- day2: [Mongo DB](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day2_mongodb.md)
+- day3: [Node](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day3_node.md)
+- day4: [Angualar](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day4_angular.md)
 
 
 
-## awesome practice
+## Contributing
 
-### 使用precommit-hook，在提交之前进行单元测试
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
-```
-➜  redis-scheduler git:(master) ✗ git commit -am 'init'
-validate: n/a (no script found)
-running pre-commit checks...
-running lint: ok
-running test: ok
-[master ce33f5e] init
- 3 files changed, 257 insertions(+), 3 deletions(-)
- create mode 100644 prototype.js
- create mode 100644 redis.conf
-```
+## 版本历史
 
+- v0.1.0 初始化版本 
 
-### 使用msgpack序列化
+## 作者
 
-A space-efficient object serialization library for NodeJS
+- 桑世龙
+- 柯织
+- 黄小龙
+## 欢迎fork和反馈
 
-https://github.com/pgriess/node-msgpack
+在issue提问或邮件shiren1118@126.com
 
+## License
 
-```
-  var msgpack = require('msgpack');
-
-  var o = {"a" : 1, "b" : 2, "c" : [1, 2, 3]};
-  var b = msgpack.pack(o);
-  var oo = msgpack.unpack(b);
-```
-
-
-### 发送http请求
-
-https://github.com/mikeal/request
-
-
-## url
-http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4#route-middleware
-
-
-
-http://cwbuecheler.com/web/tutorials/2014/restful-web-app-node-express-mongodb/
-
-
-http://coenraets.org/blog/2012/10/creating-a-rest-api-using-node-js-express-and-mongodb/
+this gem is released under the [MIT License](http://www.opensource.org/licenses/MIT).
