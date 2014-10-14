@@ -216,6 +216,16 @@ this.options = {
 - util.extend(this.options, options);和jq的$.extend是类似的。
 - if (this.options.gateway != null)这段是做更多的选项判断，比如选项间的互斥等。
 
+此法可以考虑在参数合并上试试
+
+	var default_values = {
+		
+	}
+	var body = req.body
+	
+	util.extend(default_values, body);
+	
+
 ## url
 http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4#route-middleware
 
