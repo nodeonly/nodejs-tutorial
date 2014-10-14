@@ -109,6 +109,22 @@ http://expressjs.com/
 ### 了解http协议
 
 ### 如何实现get请求
+```
+var express = require('express');
+var app = express();
+
+app.get('/', function(req, res){  
+    console.log(req.query.name,req.query.password);    
+    res.send('name:'+req.query.name+'</br>password:'+req.query.password);    
+});    
+app.listen(3000);
+console.log('Listening on port 3000');  
+```
+
+在浏览器中输入：
+
+`http://localhost:3000/?name=kezhi&password=12345`
+
 
 
 ### 如何实现post请求
