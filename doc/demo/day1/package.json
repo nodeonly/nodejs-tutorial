@@ -1,0 +1,19 @@
+{
+  "name": "express",
+  "version": "0.0.0",
+  "description": "express",
+  "main": "index.js",
+  "scripts": {
+    "test": "express"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodeonly/nodejs-tutorial"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "kezhi",
+  "license": "3000",
+  "dependencies": {}
+}
