@@ -161,6 +161,32 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 
 ### 如何处理post请求
 
+在myHttpGet模块里添加接收此路由下得post请求代码,对于post请求，用req.body接收post参数:
+
+	/* POST http.*/
+	router.post('/', function(req, res) {
+		res.send(req.body);
+	});
+
+点击按钮post发送post请求:
+
+			$.ajax({
+	             type: "POST",
+	             url: "http://localhost:3000/getserver",
+	             data: {
+	             	'method':'POST',
+	             	'name':'rainBow',
+	             	'sex':'man'
+	             },
+	             dataType: "json",
+	             success: function(data){
+	                var str = JSON.stringify(data);
+					oResBox.innerHTML = str;
+	              }
+	         });
+	         
+![Mou icon](./images/expressimg5.jpg)
+
 ### 如何实现文件上传
 
 ### request里如何取值
