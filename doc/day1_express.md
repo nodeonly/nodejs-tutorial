@@ -57,6 +57,35 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 ## 阅读文档
 ### getting start
 
+新建文件夹:
+
+	$mkdir /getting start/app
+	
+![Mou icon](./images/expressimg7.jpg)
+
+cd到app下,运行:
+
+	$sudo npm install express
+	
+将express安装在此目录下,新建app.js文件:
+
+	var express = require('express');
+	var app = express();
+
+	app.get('/',function(req,res){
+    	res.send('hello,world');
+	});
+
+	app.listen(5000);
+	
+终端运行:
+
+	$node app.js
+	
+开启端口，浏览器访问localhost:5000，输出:
+
+![Mou icon](./images/expressimg8.jpg)
+
 ### guide
 
 ### 知道如何查api文档
