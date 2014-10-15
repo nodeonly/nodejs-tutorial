@@ -33,6 +33,7 @@ http://www.mongodb.org/
 ## 了解mongoose（ORM）用法
 http://mongoosejs.com/docs/
 
+http://www.tuicool.com/articles/ZVbYra
 ## 高级
 
 - gridfs
