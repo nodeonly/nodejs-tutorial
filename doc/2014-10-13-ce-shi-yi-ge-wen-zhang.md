@@ -224,7 +224,15 @@ this.options = {
 	var body = req.body
 	
 	util.extend(default_values, body);
+
 	
+推荐https://github.com/dreamerslab/node.extend
+
+### tools
+
+https://lodash.com/docs
+
+	npm install --save lodash
 
 ## url
 http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4#route-middleware
