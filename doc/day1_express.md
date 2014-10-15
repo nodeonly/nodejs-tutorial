@@ -197,6 +197,17 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 
 各自举例
 
+body处理post请求参数，把参数整理成json各式:
+
+	router.post('/', function(req, res) {
+		res.send(req.body);
+	});
+	
+query处理get请求参数，整理成json各式:
+
+	router.get('/www:soso', function(req, res) {
+		res.send(req.query);
+	});
 
 ### response返回
 
