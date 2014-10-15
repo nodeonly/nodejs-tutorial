@@ -109,7 +109,25 @@ Error handling
 
 ![Mou icon](./images/errhadding2.jpg)
 
+Debugging Express
+
+安装debug模块:
+
+	$sudo npm install debug
+	
+然后在app.js中引入模块即可:
+
+	var oDebug = require('debug');
+	
+在引入debug后，运行app.js:
+
+	$DEBUG=express:* node app.js
+	
+![Mou icon](./images/debug1.jpg)
+
 ### 知道如何查api文档
+
+
 
 ## 核心概念
 
