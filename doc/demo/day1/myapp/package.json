@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "./node_modules/.bin/supervisor ./bin/www",
   },
   "dependencies": {
     "express": "~4.9.0",
@@ -13,5 +13,9 @@
     "serve-favicon": "~2.1.3",
     "debug": "~2.0.0",
     "jade": "~1.6.0"
+  },
+  "devDependencies": {
+    "joi": "^4.7.0",
+     "supervisor": "^0.6.0"
   }
 }

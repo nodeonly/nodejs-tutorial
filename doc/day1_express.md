@@ -6,12 +6,17 @@ http://expressjs.com/
 
 ### 如何安装
 
-  切换到相应目录下，需依赖npm,如未安装请先安装npm
+切换到相应目录下，需依赖npm,如未安装请先安装npm
   
-  创建一个 package.json 文件，或者用命令创建：
+创建一个 package.json 文件，或者用命令创建：
 	
 	$ npm init
 	
+TODO:
+
+write a npm and publish npmjs.org
+	
+
 生成代码：
 	
 ```
@@ -35,24 +40,62 @@ http://expressjs.com/
 }
 ```
 
-  安装express并将其保存在依赖列表：
+安装express并将其保存在依赖列表：
 	
-	$ npm install express --save
+	$ npm install  --save express
 	
-  将会生成 `node_modules` 目录
+将会生成 `node_modules` 目录
 	
-  如不保存到依赖列表：
+如不保存到依赖列表：
 		
 	$ npm install express
 
+`--save-dev` 保存到开发阶段的依赖列表，如添加进程监控，当文件改变时自动刷新：
+
+	$ npm install  --save-dev express
+
+```
+"scripts": {
+    "start": "./node_modules/.bin/supervisor ./bin/www",
+},
+"devDependencies": {
+     "supervisor": "^0.6.0"
+}
+```
 
 ### 如何使用generator
 
-  使用应用程序生成器工具,表达,快速创建一个应用程序框架。
+使用应用程序生成器工具,表达,快速创建一个应用程序框架。
   
-	$ npm install express-generator -g  	
+	$ npm install -g express-generator 
 	
-  创建一个名为myapp的应用
+when install finished,cli have an command with name 'express'  
+
+Express Command
+
+```
+kezhi@kezhitekiMacBook-Air ~/w/g/n/d/d/d/m/sang> express --help
+
+  Usage: express [options] [dir]
+
+  Options:
+
+    -h, --help          output usage information
+    -V, --version       output the version number
+    -e, --ejs           add ejs engine support (defaults to jade)
+        --hbs           add handlebars engine support
+    -H, --hogan         add hogan.js engine support
+    -c, --css <engine>  add stylesheet <engine> support (less|stylus|compass) (defaults to plain css)
+    -f, --force         force on non-empty directory
+
+```
+
+
+- ejs vs jade vs handlebars
+- hogan.js
+- less|stylus|compass
+	
+创建一个名为myapp的应用
   
   ```
    express myapp	    
@@ -89,6 +132,9 @@ http://expressjs.com/
 
 ![alt text](img/img01.png "myapp")
 
+how to livereload?
+
+supervisor usage
 
 
 
@@ -98,6 +144,8 @@ http://expressjs.com/
 ### 知道如何查api文档
 
 ## 核心概念
+Express框架的核心是对http模块的再包装
+
 ### 请求request
 
 ### 响应response

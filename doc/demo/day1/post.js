@@ -4,16 +4,22 @@ var app = express();
 
 app.use(bodyParser());  
 
-app.post('/', function(req, res) {  
-    console.log(req.body.name);  
-    console.log(req.body.password);  
-    res.send('Post');
-});  
-  
-post_mtd = function(req,res){  
-  res.send('name');
-}  
+app.get('/', function(req, res){
+    res.sendfile('views/index.html');
+});
 
-app.post("/test",post_mtd);
+app.post('/', function(req, res){
+    console.log(req.body.text);
+    res.status(200).json({
+    	'name':'ss'
+    })
+
+/*app.post(function(req, res){
+  res.send('Hello');
+});*/
+    //res.status(200).text('111111111')
+    //res.sendfile('views/index.html');
+});
+
 app.listen(3000);    
 console.log('Listening on port 3000');  
