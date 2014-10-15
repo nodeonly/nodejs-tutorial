@@ -88,6 +88,27 @@ cd到app下,运行:
 
 ### guide
 
+Error handling
+
+监听server服务错误，如get请求的时候输出一个没定义的变量a，这时express捕捉到错误，并返回'Something broke!':
+
+	app.get('/',function(req,res){
+    	res.send(a);
+	});
+
+	app.use(function(err, req, res, next){
+  		console.error(err.stack);
+  		res.status(500).send('Something broke!');
+	});
+
+终端输出:
+
+![Mou icon](./images/errhadding1.jpg)
+
+浏览器返回:
+
+![Mou icon](./images/errhadding2.jpg)
+
 ### 知道如何查api文档
 
 ## 核心概念
