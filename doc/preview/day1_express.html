@@ -1,0 +1,738 @@
+
+	    <html>
+	      <head>
+				  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	        <title>day1_express</title>
+					
+					<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+			
+				  <style>
+					pre {
+					    counter-reset: line-numbering;
+					    border: solid 1px #d9d9d9;
+					    border-radius: 0;
+					    background: #fff;
+					    padding: 0;
+					    line-height: 23px;
+					    margin-bottom: 30px;
+					    white-space: pre;
+					    overflow-x: auto;
+					    word-break: inherit;
+					    word-wrap: inherit;
+					}
+
+					pre a::before {
+					  content: counter(line-numbering);
+					  counter-increment: line-numbering;
+					  padding-right: 1em; /* space after numbers */
+					  width: 25px;
+					  text-align: right;
+					  opacity: 0.7;
+					  display: inline-block;
+					  color: #aaa;
+					  background: #eee;
+					  margin-right: 16px;
+					  padding: 2px 10px;
+					  font-size: 13px;
+					  -webkit-touch-callout: none;
+					  -webkit-user-select: none;
+					  -khtml-user-select: none;
+					  -moz-user-select: none;
+					  -ms-user-select: none;
+					  user-select: none;
+					}
+
+					pre a:first-of-type::before {
+					  padding-top: 10px;
+					}
+
+					pre a:last-of-type::before {
+					  padding-bottom: 10px;
+					}
+
+					pre a:only-of-type::before {
+					  padding: 10px;
+					}
+			
+					.highlight { background-color: #ffffcc } /* RIGHT */
+					</style>
+	      </head>
+	      <body>
+				  <div>
+							<div style='width:25%;'>
+									<ul id="tree" class="ztree" style='width:100%'>
+		
+									</ul>
+							</div>
+			        <div id='readme' style='width:70%;margin-left:20%;'>
+			          	<article class='markdown-body'>
+			            	<style>.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f0f0f0; }
+.highlight .c { color: #60a0b0; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #007020; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #007020 } /* Comment.Preproc */
+.highlight .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #007020 } /* Keyword.Pseudo */
+.highlight .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #902000 } /* Keyword.Type */
+.highlight .m { color: #40a070 } /* Literal.Number */
+.highlight .s { color: #4070a0 } /* Literal.String */
+.highlight .na { color: #4070a0 } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.highlight .no { color: #60add5 } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #007020 } /* Name.Exception */
+.highlight .nf { color: #06287e } /* Name.Function */
+.highlight .nl { color: #002070; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #bb60d5 } /* Name.Variable */
+.highlight .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #40a070 } /* Literal.Number.Bin */
+.highlight .mf { color: #40a070 } /* Literal.Number.Float */
+.highlight .mh { color: #40a070 } /* Literal.Number.Hex */
+.highlight .mi { color: #40a070 } /* Literal.Number.Integer */
+.highlight .mo { color: #40a070 } /* Literal.Number.Oct */
+.highlight .sb { color: #4070a0 } /* Literal.String.Backtick */
+.highlight .sc { color: #4070a0 } /* Literal.String.Char */
+.highlight .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #4070a0 } /* Literal.String.Double */
+.highlight .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.highlight .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { color: #c65d09 } /* Literal.String.Other */
+.highlight .sr { color: #235388 } /* Literal.String.Regex */
+.highlight .s1 { color: #4070a0 } /* Literal.String.Single */
+.highlight .ss { color: #517918 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #bb60d5 } /* Name.Variable.Class */
+.highlight .vg { color: #bb60d5 } /* Name.Variable.Global */
+.highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
+<h1>Express</h1>
+
+<p>http://expressjs.com/</p>
+
+<p>Express是一个简洁、灵活的基于nodejs的web应用开发框架，它是基于<a href="https://github.com/senchalabs/connect">connect</a>中间件的。</p>
+
+<p>它提供一系列强大的特性，勇于创建各种Web和移动设备应用。</p>
+
+<h2>为什么使用Express</h2>
+
+<ul>
+<li>基于node的异步，性能比较好</li>
+<li>Express本身比较成熟，目前已经是v4了</li>
+<li>有很多大规模应用实例，集群等都非常容易</li>
+</ul>
+
+<h2>无状态的http协议</h2>
+
+<p>HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。
+HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个无状态的协议。</p>
+
+<p>大家都明白，Web应用抽象起来就是客户端发出请求，请求到达服务器后，服务器经过一番捣鼓，给客户端发回一个应答。“请求”我们一般抽象成 request，“应答”是 response。服务器和客户端（一般也就是浏览器啦，但是绝不局限于浏览器哦。）之间交流的语言就是 HTTP 协议了。至于服务器怎么折腾出一个应答来的，就八仙过海，各显神通了。</p>
+
+<p>总之，Web 应用中两个重量级的东东就是： Request ， Response 。</p>
+
+<p>前面我们说到，每次有访问进来，我们的代码都会跑一遍。现在的问题是，在我们的代码里，怎么抓到客户端发来的 request , 然后，到哪里去找这个 response ，好把我们捣鼓出来的东西放进去，发给客户端呢？答案是，只要我们把他们作为参数交给 tellme 函数(你可以给这个函数取任何名字甚至不给他名字)，然后，当请求到达时，node.js 就会把客户的请求封装成 request ，预备发给客户的应答封装成 response 。我们拿到 request ，看看他请求些什么，再折腾些东西（读出个文件也好，去查数据库也好，随便你了。）丢进 response ，发给客户端。</p>
+
+<p>TODO: 此处该补出一张express在node中得位置图片</p>
+
+<h2>Node 基础</h2>
+
+<p>see <a href="https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day3_node.md">node 基础</a></p>
+
+<h2>Node 版本的http server</h2>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;http&#39;);</span>
+
+<span class="vg">http</span><span class="o">.</span><span class="vg">createServer</span><span class="p">(</span><span class="vg">function</span><span class="p">(</span><span class="vg">request</span><span class="p">,</span><span class="vg">response</span><span class="p">){</span>
+<span class="w">    </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">request</span><span class="p">);</span>
+<span class="w">    </span><span class="vg">response</span><span class="o">.</span><span class="vg">end</span><span class="p">(</span><span class="c1">&#39;Hello world!&#39;);</span>
+<span class="p">})</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">8888</span><span class="p">);</span>
+</pre></div>
+<p>这就是最简单的实现</p>
+
+<h2>Node connect 版本的http server</h2>
+
+<p>Connect is an extensible HTTP server framework for node using &quot;plugins&quot; known as middleware.</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">connect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;connect&#39;)</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;http&#39;)</span>
+
+<span class="vg">var</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">connect</span><span class="p">()</span>
+
+<span class="o">//</span><span class="w"> </span><span class="vg">gzip</span><span class="o">/</span><span class="vg">deflate</span><span class="w"> </span><span class="vg">outgoing</span><span class="w"> </span><span class="vg">responses</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">compression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;compression&#39;)</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">compression</span><span class="p">())</span>
+
+<span class="o">//</span><span class="w"> </span><span class="vg">store</span><span class="w"> </span><span class="vg">session</span><span class="w"> </span><span class="vg">state</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">browser</span><span class="w"> </span><span class="vg">cookie</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">cookieSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;cookie-session&#39;)</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">cookieSession</span><span class="p">({</span>
+<span class="w">    </span><span class="nl">keys:</span><span class="w"> </span><span class="p">[</span><span class="c1">&#39;secret1&#39;, &#39;secret2&#39;]</span>
+<span class="p">}))</span>
+
+<span class="o">//</span><span class="w"> </span><span class="vg">parse</span><span class="w"> </span><span class="vg">urlencoded</span><span class="w"> </span><span class="vg">request</span><span class="w"> </span><span class="vg">bodies</span><span class="w"> </span><span class="vg">into</span><span class="w"> </span><span class="vg">req</span><span class="o">.</span><span class="vg">body</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">bodyParser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;body-parser&#39;)</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">bodyParser</span><span class="o">.</span><span class="vg">urlencoded</span><span class="p">())</span>
+
+<span class="o">//</span><span class="w"> </span><span class="vg">respond</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">all</span><span class="w"> </span><span class="vg">requests</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">function</span><span class="p">(</span><span class="vg">req</span><span class="p">,</span><span class="w"> </span><span class="vg">res</span><span class="p">){</span>
+<span class="w">  </span><span class="vg">res</span><span class="o">.</span><span class="vg">end</span><span class="p">(</span><span class="c1">&#39;Hello from Connect!\n&#39;);</span>
+<span class="p">})</span>
+
+<span class="o">//</span><span class="vg">create</span><span class="w"> </span><span class="vg">node</span><span class="o">.</span><span class="vg">js</span><span class="w"> </span><span class="vg">http</span><span class="w"> </span><span class="vg">server</span><span class="w"> </span><span class="vg">and</span><span class="w"> </span><span class="vg">listen</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">port</span>
+<span class="vg">http</span><span class="o">.</span><span class="vg">createServer</span><span class="p">(</span><span class="vg">app</span><span class="p">)</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">3000</span><span class="p">)</span>
+</pre></div>
+<p>这是官方给出的例子</p>
+
+<h2>安装Express</h2>
+
+<ul>
+<li>如何手动安装</li>
+<li>如何使用generator</li>
+</ul>
+
+<h3>如何手动安装</h3>
+
+<p>新建文件夹:</p>
+<div class="highlight"><pre><span class="nv">$ </span>mkdir /getting start/app
+<span class="nv">$ </span>npm init
+</pre></div>
+<p><img src="./images/expressimg7.jpg" alt="Mou icon"></p>
+
+<p>cd到app下,运行:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">sudo</span><span class="w"> </span><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="w"> </span><span class="vg">express</span>
+</pre></div>
+<p>将express安装在此目录下,新建app.js文件:</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;express&#39;);</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">express</span><span class="p">();</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">get</span><span class="p">(</span><span class="c1">&#39;/&#39;,function(req,res){</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;hello,world&#39;);</span>
+<span class="p">});</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">5000</span><span class="p">);</span>
+</pre></div>
+<p>终端运行:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">node</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span>
+</pre></div>
+<p>开启端口，浏览器访问localhost:5000，输出:</p>
+
+<p><img src="./images/expressimg8.jpg" alt="Mou icon"></p>
+
+<h3>如何使用generator</h3>
+
+<h4>安装</h4>
+
+<p>generator是express命令工具集，首先确保已经安装node和npm,先在全局安装这个工具集:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">express</span><span class="o">-</span><span class="vg">generator</span>
+</pre></div>
+<p>如果安装失败，尝试加sudo权限:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">sudo</span><span class="w"> </span><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">express</span><span class="o">-</span><span class="vg">generator</span>
+</pre></div>
+<p>现在新建一个我们的express应用,执行:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">express</span><span class="w"> </span><span class="vg">expressApp</span>
+</pre></div>
+<p>项目创建完毕，文件结构如下:</p>
+
+<p><img src="./images/expressimg1.jpg" alt="Mou icon"></p>
+
+<h4>express命令以及参数说明</h4>
+
+<p>TODO:by kezhi</p>
+
+<h4>安装依赖</h4>
+
+<p>打开package.json，可以看到依赖的模块，执行命令来下载依赖的模块:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span>
+</pre></div>
+<p>如果下载依赖失败，尝试加sudo权限:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">sudo</span><span class="w"> </span><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span>
+</pre></div>
+<p>下载依赖模块成功后，可以看到在node_modules文件夹下多出了这些模块:</p>
+
+<p><img src="./images/expressimg2.jpg" alt="Mou icon"></p>
+
+<h4>启动服务器</h4>
+
+<p>回到app.js层级，执行:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">npm</span><span class="w"> </span><span class="vg">start</span>
+</pre></div>
+<p>开始运行express打开端口，用浏览器打开http://localhost:3000/，在此估计会出现缺少模块的情况，如果有模块缺少，cd到node_modules文件夹下去安装缺失的模块:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">sudo</span><span class="w"> </span><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="vg">xxx</span><span class="p">(</span><span class="err">模块名称</span><span class="p">)</span>
+</pre></div>
+<p>大概会缺失5个模块左右，模块全部安装完成，浏览器则会输出:</p>
+
+<p><img src="./images/expressimg3.jpg" alt="Mou icon"></p>
+
+<p>完毕,说明express安装成功.</p>
+
+<h2>核心概念</h2>
+
+<h3>请求request</h3>
+
+<p>Request对象是有关于客户端所发出的请求的对象，只要是有关于客户端请求的信息，都可以藉由它来取得，例如请求标头、请求方法、请求参数、客户端IP，客户端浏览器等等信息。</p>
+
+<p>客户端发来的请求，node.js 帮我们封装成 request 对象</p>
+
+<p>在request里面我们可以获得</p>
+
+<ul>
+<li>body</li>
+<li>header</li>
+<li>params</li>
+<li>query</li>
+<li>....</li>
+</ul>
+
+<h3>响应response</h3>
+
+<p>Response对象是有关于对客户端请求之响应，可以利用它来设定一些要响应的讯息，例如标题信息、响应状态码等.</p>
+
+<p>我们利用response,向客户端发送回答，说白了是向浏览器写内容。</p>
+
+<h3>理解路由</h3>
+
+<p>所谓路由就是定义</p>
+
+<ul>
+<li>地址1：谁来处理,以什么方式处理</li>
+<li>地址2：谁来处理,以什么方式处理</li>
+</ul>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">var</span><span class="w"> </span><span class="vg">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;express&#39;);</span>
+<span class="w">    </span><span class="vg">var</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">express</span><span class="p">();</span>
+
+<span class="w">    </span><span class="vg">app</span><span class="o">.</span><span class="vg">get</span><span class="p">(</span><span class="c1">&#39;/&#39;,function(req,res){</span>
+<span class="w">        </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;hello,world&#39;);</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="vg">app</span><span class="o">.</span><span class="vg">post</span><span class="p">(</span><span class="c1">&#39;/someur&#39;,function(req,res){</span>
+<span class="w">        </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;hello,world&#39;);</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="vg">app</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">5000</span><span class="p">);</span>
+</pre></div>
+<p>说明一下</p>
+
+<h3>session</h3>
+
+<p>一个session就是一系列某用户和服务器间的通讯。服务器有能力分辨出不同的用户。</p>
+
+<p>一个session的建立是从一个用户向服务器发第一个请求开始，而以用户显式结束或session超时为结束。
+其工作原理是这样的：</p>
+
+<ol>
+<li>当一个用户向服务器发送第一个请求时，服务器为其建立一个session，并为此session创建一个标识号</li>
+<li>这个用户随后的所有请求都应包括这个标识号。服务器会校对这个标识号以判断请求属于哪个session</li>
+<li>当用户在一段时间没有任何操作，session就会自动超时</li>
+</ol>
+
+<p>这种机制不使用IP作为标识，是因为很多机器是通过代理服务器方式上网，没法区分每一台机器。</p>
+
+<p>对于session标识号（sessionID），有两种方式实现：cookies和URL重写，此处不详细讲解。</p>
+
+<h4>express的session</h4>
+
+<p>nodejs本身不管session，因为用了express框架，express基于connect，connect中有session管理的能力。connect是插件式架构，它的插件称之为“中间件”，其中有个中间件就是叫作session。</p>
+
+<p>到了4.xx版本之后，session管理和cookies等许多模块都不再直接包含在express中，而是需要单独下载添加。</p>
+
+<p>https://github.com/expressjs/session</p>
+
+<h4>应用场景: 登陆</h4>
+
+<ul>
+<li>在登陆页面完成用户鉴权，鉴权成功后，在session里存储用户信息</li>
+<li>一段时间没有任何操作，session就会自动超时，此时用户点击页面的时候，后台会判断是否存在当前用户的session</li>
+<li>一半超时会重定向到登陆界面，提示此操作需要用户登陆</li>
+</ul>
+
+<h4>应用场景: 购物车</h4>
+
+<ul>
+<li>保证当前session里有用户信息，用户是登陆状态的</li>
+<li>用户在购物页面操作，点击加入购物车，此时在session里增加一条信息，存储当前物品信息</li>
+<li>用户结算的时候，从session获取物品价格和数量，计算出总价，订单完成后，清理session</li>
+</ul>
+
+<h3>理解模板jade</h3>
+
+<ul>
+<li>http://jade-lang.com/</li>
+</ul>
+
+<p>还有handlebars</p>
+
+<p>以及如何用生成器指定模板</p>
+
+<h3>理解public目录</h3>
+
+<ul>
+<li>常规做法</li>
+</ul>
+
+<p>app.js里</p>
+<div class="highlight"><pre><span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">express</span><span class="o">.</span><span class="vg">static</span><span class="p">(</span><span class="vg">path</span><span class="o">.</span><span class="vg">join</span><span class="p">(</span><span class="vg">__dirname</span><span class="p">,</span><span class="w"> </span><span class="c1">&#39;public&#39;)));</span>
+</pre></div>
+<p>它就是用来托管public中得所有文件。可以以http方式访问</p>
+
+<p>说明</p>
+
+<p>####如果public/index.html不存在</p>
+
+<p>此时如何使用其他页面做为入口，需要再<code>/</code>路由定义处，redirect到对应页面(by kezhi)。</p>
+
+<h4>如何在静态页面处理请求参数</h4>
+
+<p>在静态页面处理请求参数，是通过连接地址把参数传递过去，通过前端jacascript取出做处理(by kezhi)。</p>
+
+<h4>理解express.static</h4>
+
+<p>说明http-server用法</p>
+
+<p>区分express.static和http-server的差别：功能一样，用法上有差异</p>
+
+<p>http-server只做静态托管文件，输出请求文件，无法拦截到请求参数;
+express.static不仅可以托管静态文件，并且提供接口可以拦截到前端页面的请求参数，并且可以控制返回数据;（这句是错的）</p>
+
+<h4>路由冲突</h4>
+
+<p>当<code>public/index.html</code>和路由的<code>/</code>冲突</p>
+
+<p>此时按照<code>public/index.html</code>走</p>
+
+<h2>任务</h2>
+
+<p>此处开始是大家每个人都必须亲手做的练习</p>
+
+<ol>
+<li>准备工作</li>
+<li>路由定制方式</li>
+<li>如何处理get请求</li>
+<li>如何处理post请求</li>
+<li>如何实现文件上传</li>
+<li>request里如何取值</li>
+<li>response返回</li>
+<li>完成api返回</li>
+<li>完成登陆</li>
+<li>完成购物车</li>
+</ol>
+
+<h3>准备工作</h3>
+
+<p>安装supervisor</p>
+
+<h3>路由定制方式</h3>
+
+<p>路由定制方式有2种</p>
+
+<ul>
+<li>常规做法</li>
+<li>使用路由重定向</li>
+</ul>
+
+<h4>常规定义路由</h4>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;express&#39;);</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">express</span><span class="p">();</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">get</span><span class="p">(</span><span class="c1">&#39;/&#39;,function(req,res){</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;hello,world&#39;);</span>
+<span class="p">});</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">post</span><span class="p">(</span><span class="c1">&#39;/someur&#39;,function(req,res){</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;hello,world&#39;);</span>
+<span class="p">});</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">5000</span><span class="p">);</span>
+</pre></div>
+<p>定义了2个请求</p>
+
+<ul>
+<li>/</li>
+<li>/someurl</li>
+</ul>
+
+<h4>使用路由重定向</h4>
+
+<p>in app.js</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;./routes/index&#39;);</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;./routes/users&#39;);</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="c1">&#39;/&#39;, routes);</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="c1">&#39;/users&#39;, users);</span>
+</pre></div>
+<p>然后in <code>/routes/index.js</code>里</p>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">express</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="c">&#39;express&#39;);</span>
+<span class="n">var</span> <span class="n">router</span> <span class="o">=</span> <span class="n">express</span><span class="p">.</span><span class="n">Router</span><span class="p">()</span><span class="err">;</span>
+
+<span class="n">router</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="c">&#39;/get&#39;, function(req, res) {</span>
+  <span class="n">res</span><span class="p">.</span><span class="n">render</span><span class="p">(</span><span class="c">&#39;index&#39;, { title: &#39;Express&#39; });</span>
+<span class="p">})</span><span class="err">;</span>
+
+<span class="n">router</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="c">&#39;/posttapi&#39;, function(req, res) {</span>
+  <span class="n">res</span><span class="p">.</span><span class="n">render</span><span class="p">(</span><span class="c">&#39;index&#39;, { title: &#39;Express&#39; });</span>
+<span class="p">})</span><span class="err">;</span>
+
+<span class="n">module</span><span class="p">.</span><span class="n">exports</span> <span class="o">=</span> <span class="n">router</span><span class="err">;</span>
+</pre></div>
+<p>此时的router里可以增加各种请求的方法。</p>
+
+<p>这种写法是模块化写法，可以按照业务或者其他分类组织代码，使代码具有更高的可读性。</p>
+
+<h3>如何处理get请求</h3>
+
+<p>我们可以在一个html文件里向端口发送get请求，首先要在访问http://localhost:3000下，端口能向浏览器输出此html，默认情况下，express是会输出pubblic文件夹下的index.html文件，在没有特别指明的情况下，所以注释掉:</p>
+<div class="highlight"><pre><span class="c1">//app.use(&#39;/&#39;, routes);</span>
+</pre></div>
+<p>这样在get请求的url为&#39;/&#39;时，express会找到pubblic文件夹;我们可以自定义路由:</p>
+<div class="highlight"><pre><span class="c1">//自定义路由</span>
+<span class="k">var</span> <span class="n">myHttpGet</span> <span class="o">=</span> <span class="n">require</span><span class="p">(&#39;.</span><span class="o">/</span><span class="n">routes</span><span class="o">/</span><span class="n">getserver</span><span class="p">&#39;);</span>
+<span class="n">app</span><span class="p">.</span><span class="k">use</span><span class="p">(&#39;</span><span class="o">/</span><span class="n">getserver</span><span class="p">&#39;,</span> <span class="n">myHttpGet</span><span class="p">);</span>
+</pre></div>
+<p>当get请求的url为/getserver时，express会执行myHttpGet模块，在routes文件夹下实现myHttpGet模块:</p>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">express</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="c">&#39;express&#39;);</span>
+<span class="n">var</span> <span class="n">router</span> <span class="o">=</span> <span class="n">express</span><span class="p">.</span><span class="n">Router</span><span class="p">()</span><span class="err">;</span>
+
+<span class="o">/*</span> <span class="k">GET</span> <span class="n">http</span><span class="p">.</span><span class="o">*/</span>
+<span class="n">router</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="c">&#39;/&#39;, function(req, res) {</span>
+    <span class="n">var</span> <span class="n">sUrl</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">url</span><span class="err">;</span>
+    <span class="n">var</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">sUrl</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="c">&#39;?&#39;);</span>
+    <span class="n">var</span> <span class="n">arrReq</span> <span class="o">=</span> <span class="n">arr</span><span class="err">[</span><span class="mi">1</span><span class="err">]</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="c">&#39;&amp;&#39;);</span>
+    <span class="n">var</span> <span class="n">resJson</span> <span class="o">=</span> <span class="p">{}</span><span class="err">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">var</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="err">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arrReq</span><span class="p">.</span><span class="n">length</span><span class="err">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="o">//</span><span class="err">[</span><span class="c">&#39;xx=xx&#39;,&#39;xx=xx&#39;]</span>
+        <span class="n">var</span> <span class="n">newarr</span> <span class="o">=</span> <span class="n">arrReq</span><span class="err">[</span><span class="n">i</span><span class="err">]</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="c">&#39;=&#39;);</span>
+        <span class="n">var</span> <span class="n">attr</span> <span class="o">=</span> <span class="n">newarr</span><span class="err">[</span><span class="mi">0</span><span class="err">];</span>
+        <span class="n">var</span> <span class="n">value</span> <span class="o">=</span> <span class="n">newarr</span><span class="err">[</span><span class="mi">1</span><span class="err">];</span>
+        <span class="n">resJson</span><span class="err">[</span><span class="n">attr</span><span class="err">]</span> <span class="o">=</span> <span class="n">value</span><span class="err">;</span>
+    <span class="p">}</span><span class="err">;</span>
+    <span class="n">res</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">resJson</span><span class="p">)</span><span class="err">;</span>
+<span class="p">})</span><span class="err">;</span>
+
+<span class="n">module</span><span class="p">.</span><span class="n">exports</span> <span class="o">=</span> <span class="n">router</span><span class="err">;</span>
+</pre></div>
+<p>当我们在html里用ajax向此路由发送get请求时，我们可以取到参数，做一些处理后，用:</p>
+<div class="highlight"><pre><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="vg">resJson</span><span class="p">);</span>
+</pre></div>
+<p>返回给ajax对象:</p>
+<div class="highlight"><pre><span class="vg">oGetBtn</span><span class="o">.</span><span class="vg">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">function</span><span class="p">(){</span><span class="w">   </span>
+
+<span class="w">     </span><span class="err">$</span><span class="o">.</span><span class="vg">ajax</span><span class="p">({</span>
+<span class="w">         </span><span class="nl">type:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nl">url:</span><span class="w"> </span><span class="s2">&quot;http://localhost:3000/getserver&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nl">data:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">&#39;method&#39;:&#39;GET&#39;,</span>
+<span class="w">            </span><span class="c1">&#39;name&#39;:&#39;rainBow&#39;,</span>
+<span class="w">            </span><span class="c1">&#39;sex&#39;:&#39;man&#39;</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="nl">dataType:</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nl">success:</span><span class="w"> </span><span class="vg">function</span><span class="p">(</span><span class="vg">data</span><span class="p">){</span>
+<span class="w">            </span><span class="vg">var</span><span class="w"> </span><span class="vg">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">JSON</span><span class="o">.</span><span class="vg">stringify</span><span class="p">(</span><span class="vg">data</span><span class="p">);</span>
+<span class="w">            </span><span class="vg">oResBox</span><span class="o">.</span><span class="vg">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">str</span><span class="p">;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">     </span><span class="p">});</span>
+<span class="p">};</span>
+</pre></div>
+<p>点击GET按钮发送GET请求，并把发出去的参数整理成json格式并返回:</p>
+
+<p><img src="./images/expressimg4.jpg" alt="Mou icon"></p>
+
+<h3>如何处理post请求</h3>
+
+<p>在myHttpGet模块里添加接收此路由下得post请求代码,对于post请求，用req.body接收post参数:</p>
+<div class="highlight"><pre><span class="cm">/* POST http.*/</span>
+<span class="n">router</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="sc">&#39;/&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">res</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">body</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+<p>点击按钮post发送post请求:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="o">.</span><span class="vg">ajax</span><span class="p">({</span>
+<span class="w">     </span><span class="nl">type:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nl">url:</span><span class="w"> </span><span class="s2">&quot;http://localhost:3000/getserver&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nl">data:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">&#39;method&#39;:&#39;POST&#39;,</span>
+<span class="w">        </span><span class="c1">&#39;name&#39;:&#39;rainBow&#39;,</span>
+<span class="w">        </span><span class="c1">&#39;sex&#39;:&#39;man&#39;</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="nl">dataType:</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nl">success:</span><span class="w"> </span><span class="vg">function</span><span class="p">(</span><span class="vg">data</span><span class="p">){</span>
+<span class="w">        </span><span class="vg">var</span><span class="w"> </span><span class="vg">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">JSON</span><span class="o">.</span><span class="vg">stringify</span><span class="p">(</span><span class="vg">data</span><span class="p">);</span>
+<span class="w">        </span><span class="vg">oResBox</span><span class="o">.</span><span class="vg">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">str</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w"> </span><span class="p">});</span>
+</pre></div>
+<p><img src="./images/expressimg5.jpg" alt="Mou icon"></p>
+
+<p>更多，带有参数的post请求</p>
+<div class="highlight"><pre><span class="vg">router</span><span class="o">.</span><span class="vg">post</span><span class="p">(</span><span class="c1">&#39;/post/:id&#39;, function(req, res) {</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">status</span><span class="p">(</span><span class="il">200</span><span class="p">)</span><span class="o">.</span><span class="vg">json</span><span class="p">({</span>
+<span class="w">        </span><span class="nl">data:</span><span class="p">{</span>
+<span class="w">            </span><span class="nl">id:</span><span class="vg">req</span><span class="o">.</span><span class="vg">param</span><span class="p">(</span><span class="c1">&#39;id&#39;),</span>
+<span class="w">            </span><span class="nl">name:</span><span class="c1">&#39;sss&#39;,</span>
+<span class="w">            </span><span class="nl">kkk:</span><span class="vg">req</span><span class="o">.</span><span class="vg">body</span><span class="o">.</span><span class="vg">kkk</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">});</span>
+</pre></div>
+<h3>如何实现文件上传</h3>
+
+<h3>request里如何取值</h3>
+
+<ul>
+<li>body</li>
+<li>params</li>
+<li>query</li>
+</ul>
+
+<p>各自举例</p>
+
+<p>body处理post请求参数，把参数整理成json各式:</p>
+<div class="highlight"><pre><span class="vg">router</span><span class="o">.</span><span class="vg">post</span><span class="p">(</span><span class="c1">&#39;/&#39;, function(req, res) {</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="vg">req</span><span class="o">.</span><span class="vg">body</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+<p>query处理get请求参数，整理成json各式:</p>
+<div class="highlight"><pre><span class="vg">router</span><span class="o">.</span><span class="vg">get</span><span class="p">(</span><span class="c1">&#39;/www:soso&#39;, function(req, res) {</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="vg">req</span><span class="o">.</span><span class="vg">query</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+<h3>response返回</h3>
+
+<ul>
+<li>text</li>
+<li>xml</li>
+<li>json</li>
+</ul>
+
+<h3>完成api返回</h3>
+
+<h3>完成登陆</h3>
+
+<h3>完成购物车</h3>
+
+<h2>实践积累</h2>
+
+<p>试着说明package.json的众多方面</p>
+
+<ul>
+<li><code>npm install --save</code>  vs <code>npm install --save-dev</code></li>
+<li><code>npm start</code> vs <code>npm test</code> (scripts自定义)</li>
+<li>如何写一个npm，以及发布</li>
+</ul>
+
+<h2>阅读文档</h2>
+
+<h3>getting start</h3>
+
+<p>入门文档，如果你看完了上面的内容，就可以不要看了</p>
+
+<h3>guide</h3>
+
+<p>此处是开发指南，建议完全看一遍</p>
+
+<p>Error handling</p>
+
+<p>监听server服务错误，如get请求的时候输出一个没定义的变量a，这时express捕捉到错误，并返回&#39;Something broke!&#39;:</p>
+<div class="highlight"><pre><span class="vg">app</span><span class="o">.</span><span class="vg">get</span><span class="p">(</span><span class="c1">&#39;/&#39;,function(req,res){</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="vg">a</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">function</span><span class="p">(</span><span class="vg">err</span><span class="p">,</span><span class="w"> </span><span class="vg">req</span><span class="p">,</span><span class="w"> </span><span class="vg">res</span><span class="p">,</span><span class="w"> </span><span class="vg">next</span><span class="p">){</span>
+<span class="w">    </span><span class="vg">console</span><span class="o">.</span><span class="vg">error</span><span class="p">(</span><span class="vg">err</span><span class="o">.</span><span class="vg">stack</span><span class="p">);</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">status</span><span class="p">(</span><span class="il">500</span><span class="p">)</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;Something broke!&#39;);</span>
+<span class="p">});</span>
+</pre></div>
+<p>终端输出:</p>
+
+<p><img src="./images/errhadding1.jpg" alt="Mou icon"></p>
+
+<p>浏览器返回:</p>
+
+<p><img src="./images/errhadding2.jpg" alt="Mou icon"></p>
+
+<p>Debugging Express</p>
+
+<p>Expressy已经内置了debug模块，如果要用debug运行app.js:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">DEBUG</span><span class="o">=</span><span class="nl">express:</span><span class="o">*</span><span class="w"> </span><span class="vg">node</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span>
+</pre></div>
+<p><img src="./images/debug1.jpg" alt="Mou icon"></p>
+
+<h3>知道如何查api文档</h3>
+
+<p>中文文档地址 </p>
+
+<p>http://www.expressjs.com.cn</p>
+
+<p>如何在mac下面使用Dash查看离线文档</p>
+
+<h2>更多</h2>
+
+<ul>
+<li>connect</li>
+<li>express框架源码</li>
+<li>反向代理（proxy，比如haproxy，nginx）</li>
+<li>集群部署</li>
+<li><p>可以把session存储到redis等缓存中</p>
+<div class="highlight"><pre><span class="c1">// 设置 Session</span>
+<span class="n">app</span><span class="p">.</span><span class="k">use</span><span class="p">(</span><span class="n">session</span><span class="p">({</span>
+  <span class="nl">store:</span> <span class="k">new</span> <span class="n">RedisStore</span><span class="p">({</span>
+    <span class="nl">host:</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+    <span class="nl">port:</span> <span class="mh">6379</span><span class="p">,</span>
+    <span class="nl">db:</span> <span class="s">&quot;test_session&quot;</span>
+  <span class="p">}),</span>
+  <span class="nl">resave:</span><span class="n">false</span><span class="p">,</span>
+  <span class="nl">saveUninitialized:</span><span class="n">false</span><span class="p">,</span>
+  <span class="nl">secret:</span> <span class="p">&#39;</span><span class="n">keyboard</span> <span class="n">cat</span><span class="p">&#39;</span>
+<span class="p">}))</span>
+</pre></div></li>
+<li><p>dsdsds</p>
+
+<h2>总结</h2></li>
+</ul>
+
+			          	</article>
+			        </div>
+					</div>
+	      </body>
+	    </html>
+			<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+			<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+			<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+      <script type="text/javascript" src="toc/toc_conf.js"></script>
+      
+			<SCRIPT type="text/javascript" >
+			<!--
+			$(document).ready(function(){
+          var css_conf = eval(markdown_panel_style);
+          $('#readme').css(css_conf)
+          
+          var conf = eval(jquery_ztree_toc_opts);
+  				$('#tree').ztree_toc(conf);
+
+				
+			});
+			//-->
+			</SCRIPT>
+	  

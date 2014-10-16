@@ -4,6 +4,7 @@ nodejs-tutorial
 
 主要是用nodejs+mongodb构建web server
 
+![](doc/images/arch.png)
 ## Lession
 
 MEAN
