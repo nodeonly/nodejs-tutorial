@@ -153,10 +153,14 @@ TODO:by kezhi
 在静态页面处理请求参数，是通过连接地址把参数传递过去，通过前端jacascript取出做处理。
 
 
-理解express.static和http-server的差别
+#### 理解express.static和http-server的差别
 
 http-server只做静态托管文件，输出请求文件，无法拦截到请求参数;
-express.static不仅可以托管静态文件，并且提供接口可以拦截到前端页面的请求参数，并且可以控制返回数据;
+express.static不仅可以托管静态文件，并且提供接口可以拦截到前端页面的请求参数，并且可以控制返回数据;（这句是错的）
+
+#### 当public/index.html和路由的`/`冲突
+
+此时按照public/index.html走
 
 ### 理解模板jade
 - http://jade-lang.com/
@@ -167,15 +171,71 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 
 ### 理解路由
 
+所谓路由就是定义
+
+```
+	地址1：谁来处理,以什么方式处理
+	地址2：谁来处理,以什么方式处理
+```
+
+路由定制方式有2种
+
 - 常规做法
 - 使用路由重定向
 
-常规定义路由:
+#### 常规定义路由:
 
-	var myHttpGet = require('./routes/getserver');
-	app.use('/getserver', myHttpGet);
+	var express = require('express');
+	var app = express();
+
+	app.get('/',function(req,res){
+    	res.send('hello,world');
+	});
 	
-定义一个myHttpGet模块，再定义一个'/getserver'路由，当请求路径为'/getserver'时，调用myHttpGet模块.
+	app.post('/someur',function(req,res){
+    	res.send('hello,world');
+	});
+
+	app.listen(5000);
+	
+定义了2个请求
+
+- /
+- /someurl
+
+
+#### 使用路由重定向
+
+in app.js
+
+```
+var routes = require('./routes/index');
+var users = require('./routes/users');
+
+app.use('/', routes);
+app.use('/users', users);
+```
+
+然后in `/routes/index.js`里
+
+```
+var express = require('express');
+var router = express.Router();
+
+router.get('/get', function(req, res) {
+  res.render('index', { title: 'Express' });
+});
+
+router.post('/posttapi', function(req, res) {
+  res.render('index', { title: 'Express' });
+});
+
+module.exports = router;
+```
+
+此时的router里可以增加各种请求的方法。
+
+这种写法是模块化写法，可以按照业务或者其他分类组织代码，使代码具有更高的可读性。
 
 ### 请求request
 
