@@ -111,15 +111,7 @@ Error handling
 
 Debugging Express
 
-安装debug模块:
-
-	$sudo npm install debug
-	
-然后在app.js中引入模块即可:
-
-	var oDebug = require('debug');
-	
-在引入debug后，运行app.js:
+Expressy已经内置了debug模块，如果要用debug运行app.js:
 
 	$DEBUG=express:* node app.js
 	
@@ -127,16 +119,32 @@ Debugging Express
 
 ### 知道如何查api文档
 
+中文文档地址 
 
+http://www.expressjs.com.cn
 
 ## 核心概念
+
+Express 是一个简洁、灵活的 node.js Web 应用开发框架, 它提供一系列强大的特性，帮助创建各种Web 和移动设备应用。
 
 ### 理解public目录
 
 - 常规做法
+
+	app.use(express.static(path.join(__dirname, 'public')));
+	
+来托管pubblic中得所有文件。
+
+
 - 如何在静态页面处理请求参数
 
+在静态页面处理请求参数，是通过连接地址把参数传递过去，通过前端jacascript取出做处理。
+
+
 理解express.static和http-server的差别
+
+http-server只做静态托管文件，输出请求文件，无法拦截到请求参数;
+express.static不仅可以托管静态文件，并且提供接口可以拦截到前端页面的请求参数，并且可以控制返回数据;
 
 ### 理解模板jade
 - http://jade-lang.com/
