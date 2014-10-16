@@ -142,30 +142,6 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 
 TODO:by kezhi
 
-```
-	Usage: express [options] [dir]
-
-  	Options:
-
-    -h, --help          output usage information  //
-    -V, --version       output the version number
-    -e, --ejs           add ejs engine support (defaults to jade)
-        --hbs           add handlebars engine support
-    -H, --hogan         add hogan.js engine support
-    -c, --css <engine>  add stylesheet <engine> support (less|stylus|compass) (defaults to plain css)
-    -f, --force         force on non-empty directory
-    
-    express --help     //查看帮助
-    express --version  //查看版本
-    express --ejs      //添加模板引擎，默认为jade
-    express --hbs      //添加handlebars模板
-    express --hogan    //添加hogan.js模板
-    express --css      //添加css引擎，默认为plain css
-
-
-```
-
-
 #### 安装依赖
 
 打开package.json，可以看到依赖的模块，执行命令来下载依赖的模块:
@@ -306,12 +282,6 @@ app.js里
 
 在静态页面处理请求参数，是通过连接地址把参数传递过去，通过前端jacascript取出做处理(by kezhi)。
 
-```
-$.get('http://localhost:3000/get',function(data){
-	$('.get-name').val(data.data.name)
-})
-```
-
 
 #### 理解express.static
 
@@ -348,23 +318,6 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 
 安装supervisor(by kezhi)
 
-由于supervisor是方便于开发的，所以我们将添加开发阶段的依赖：
-
-```
-npm install --save-dev supervisor
-```
-
-安装完成后package.json文件中将会多出 `supervisor`的依赖
-```
-"devDependencies": {
-    "supervisor": "^0.6.0"
-}
-```
-修改package.json中的scripts：
-
-```
-"start": "node_modules/.bin/supervisor ./bin/www"
-```
 
 ### 路由定制方式
 路由定制方式有2种
@@ -554,17 +507,7 @@ query处理get请求参数，整理成json各式:
 	router.get('/www:soso', function(req, res) {
 		res.send(req.query);
 	});
-	
-param取路由中的参数:
 
-```
-router.post('/post/:id', function(req, res) {
-	res.status(200).json({
-		res.send(req.param('id'));
-	})
-})
-
-```
 ### response返回
 
 - text
@@ -582,9 +525,18 @@ router.post('/post/:id', function(req, res) {
 
 试着说明package.json的众多方面
 
+package.json是描述项目文件，描述项目所依赖的模块，当我们把一个项目发布到npm时，其实不用把我们所依赖的模块一起发不上去，只需要把依赖的模块名称填写到package.json里面，当别人npm install的时候，npm会去识别package.json中所依赖的模块名称，然后下载下来:
+
 - `npm install --save`  vs `npm install --save-dev`
 - `npm start` vs `npm test` (scripts自定义)
 - 如何写一个npm，以及发布
+
+当我们通过npm安装某一模块时，运用`npm install --save`或者`npm install --save-dev`，npm则会把我们的项目依赖信息写入package.json中。
+
+`npm install --save`  和 `npm install --save-dev`的区别:
+
+devDependencies下列出的模块，是我们开发时用的，比如grunt-contrib-uglify，我们用它混淆js文件，它们不会被部署到生产环境。dependencies下的模块，则是我们生产环境中需要的依赖。
+
 
 
 ## 阅读文档
