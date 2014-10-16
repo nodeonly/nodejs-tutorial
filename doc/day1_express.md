@@ -144,46 +144,6 @@ TODO:by kezhi
 ## 核心概念
 
 
-### 理解public目录
-
-- 常规做法
-
-	app.use(express.static(path.join(__dirname, 'public')));
-	
-来托管pubblic中得所有文件。
-
-
-- 如何在静态页面处理请求参数
-
-在静态页面处理请求参数，是通过连接地址把参数传递过去，通过前端jacascript取出做处理。
-
-
-#### 理解express.static和http-server的差别
-
-http-server只做静态托管文件，输出请求文件，无法拦截到请求参数;
-express.static不仅可以托管静态文件，并且提供接口可以拦截到前端页面的请求参数，并且可以控制返回数据;（这句是错的）
-
-#### 当public/index.html和路由的`/`冲突
-
-此时按照public/index.html走
-
-### 理解模板jade
-- http://jade-lang.com/
-
-还有handlebars
-
-以及如何用生成器指定模板
-
-### 理解路由
-
-所谓路由就是定义
-
-```
-	地址1：谁来处理,以什么方式处理
-	地址2：谁来处理,以什么方式处理
-```
-
-
 ### 请求request
 
 Request对象是有关于客户端所发出的请求的对象，只要是有关于客户端请求的信息，都可以藉由它来取得，例如请求标头、请求方法、请求参数、客户端IP，客户端浏览器等等信息。
@@ -203,6 +163,14 @@ Request对象是有关于客户端所发出的请求的对象，只要是有关�
 Response对象是有关于对客户端请求之响应，可以利用它来设定一些要响应的讯息，例如标题信息、响应状态码等.
 
 我们利用response,向客户端发送回答，说白了是向浏览器写内容。
+
+### 理解路由
+
+所谓路由就是定义
+
+- 地址1：谁来处理,以什么方式处理
+- 地址2：谁来处理,以什么方式处理
+
 
 ### session
 
@@ -240,7 +208,51 @@ https://github.com/expressjs/session
 - 用户在购物页面操作，点击加入购物车，此时在session里增加一条信息，存储当前物品信息
 - 用户结算的时候，从session获取物品架构和数量，计算出总价，订单完成后，清理session
 
+### 理解模板jade
+- http://jade-lang.com/
+
+还有handlebars
+
+以及如何用生成器指定模板
+
+### 理解public目录
+
+- 常规做法
+
+	app.use(express.static(path.join(__dirname, 'public')));
+	
+来托管pubblic中得所有文件。
+
+
+- 如何在静态页面处理请求参数
+
+在静态页面处理请求参数，是通过连接地址把参数传递过去，通过前端jacascript取出做处理。
+
+
+#### 理解express.static和http-server的差别
+
+http-server只做静态托管文件，输出请求文件，无法拦截到请求参数;
+express.static不仅可以托管静态文件，并且提供接口可以拦截到前端页面的请求参数，并且可以控制返回数据;（这句是错的）
+
+#### 当public/index.html和路由的`/`冲突
+
+此时按照public/index.html走
+
+
 ## 任务
+
+此处开始是大家每个人都必须亲手做的练习
+
+- 路由定制方式
+- 如何处理get请求
+- 如何处理post请求
+- 如何实现文件上传
+- request里如何取值
+- response返回
+- 完成api返回
+- 完成登陆
+- 完成购物车
+
 
 ### 路由定制方式
 路由定制方式有2种
@@ -410,6 +422,7 @@ module.exports = router;
 
 ### 如何实现文件上传
 
+
 ### request里如何取值
 
 - body
@@ -435,6 +448,13 @@ query处理get请求参数，整理成json各式:
 - text
 - xml
 - json
+
+### 完成api返回
+
+### 完成登陆
+
+### 完成购物车
+
 
 ## 实践积累
 
