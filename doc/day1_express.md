@@ -229,12 +229,16 @@ https://github.com/expressjs/session
 在静态页面处理请求参数，是通过连接地址把参数传递过去，通过前端jacascript取出做处理。
 
 
-#### 理解express.static和http-server的差别
+#### 理解express.static
+
+区分express.static和http-server的差别
 
 http-server只做静态托管文件，输出请求文件，无法拦截到请求参数;
 express.static不仅可以托管静态文件，并且提供接口可以拦截到前端页面的请求参数，并且可以控制返回数据;（这句是错的）
 
-#### 当public/index.html和路由的`/`冲突
+#### 路由冲突
+
+当public/index.html和路由的`/`冲突
 
 此时按照public/index.html走
 
