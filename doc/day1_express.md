@@ -150,6 +150,12 @@ Debugging Express
 - 常规做法
 - 使用路由重定向
 
+常规定义路由:
+
+	var myHttpGet = require('./routes/getserver');
+	app.use('/getserver', myHttpGet);
+	
+定义一个myHttpGet模块，再定义一个'/getserver'路由，当请求路径为'/getserver'时，调用myHttpGet模块.
 
 ### 请求request
 
