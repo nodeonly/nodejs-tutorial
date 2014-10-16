@@ -160,11 +160,11 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 
 <p>TODO: 此处该补出一张express在node中得位置图片</p>
 
-<h2>node 基础</h2>
+<h2>Node 基础</h2>
 
 <p>see <a href="https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day3_node.md">node 基础</a></p>
 
-<h2>node 版本的http server</h2>
+<h2>Node 版本的http server</h2>
 <div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;http&#39;);</span>
 
 <span class="vg">http</span><span class="o">.</span><span class="vg">createServer</span><span class="p">(</span><span class="vg">function</span><span class="p">(</span><span class="vg">request</span><span class="p">,</span><span class="vg">response</span><span class="p">){</span>
@@ -174,7 +174,7 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 </pre></div>
 <p>这就是最简单的实现</p>
 
-<h2>node connect 版本的http server</h2>
+<h2>Node connect 版本的http server</h2>
 
 <p>Connect is an extensible HTTP server framework for node using &quot;plugins&quot; known as middleware.</p>
 <div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">connect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;connect&#39;)</span>
@@ -216,7 +216,8 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 <h3>如何手动安装</h3>
 
 <p>新建文件夹:</p>
-<div class="highlight"><pre><span class="err">$</span><span class="vg">mkdir</span><span class="w"> </span><span class="o">/</span><span class="vg">getting</span><span class="w"> </span><span class="vg">start</span><span class="o">/</span><span class="vg">app</span>
+<div class="highlight"><pre><span class="nv">$ </span>mkdir /getting start/app
+<span class="nv">$ </span>npm init
 </pre></div>
 <p><img src="./images/expressimg7.jpg" alt="Mou icon"></p>
 
@@ -250,10 +251,7 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 <p>如果安装失败，尝试加sudo权限:</p>
 <div class="highlight"><pre><span class="err">$</span><span class="vg">sudo</span><span class="w"> </span><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">express</span><span class="o">-</span><span class="vg">generator</span>
 </pre></div>
-<p>现在新建一个文件夹装我们的express应用:</p>
-<div class="highlight"><pre><span class="err">$</span><span class="vg">mkdir</span><span class="w"> </span><span class="vg">expressApp</span>
-</pre></div>
-<p>然后执行:</p>
+<p>现在新建一个我们的express应用,执行:</p>
 <div class="highlight"><pre><span class="err">$</span><span class="vg">express</span><span class="w"> </span><span class="vg">expressApp</span>
 </pre></div>
 <p>项目创建完毕，文件结构如下:</p>
@@ -304,8 +302,8 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 <li>body</li>
 <li>header</li>
 <li>params</li>
-<li>query
-....</li>
+<li>query</li>
+<li>....</li>
 </ul>
 
 <h3>响应response</h3>
@@ -322,6 +320,20 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 <li>地址1：谁来处理,以什么方式处理</li>
 <li>地址2：谁来处理,以什么方式处理</li>
 </ul>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">var</span><span class="w"> </span><span class="vg">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;express&#39;);</span>
+<span class="w">    </span><span class="vg">var</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">express</span><span class="p">();</span>
+
+<span class="w">    </span><span class="vg">app</span><span class="o">.</span><span class="vg">get</span><span class="p">(</span><span class="c1">&#39;/&#39;,function(req,res){</span>
+<span class="w">        </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;hello,world&#39;);</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="vg">app</span><span class="o">.</span><span class="vg">post</span><span class="p">(</span><span class="c1">&#39;/someur&#39;,function(req,res){</span>
+<span class="w">        </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;hello,world&#39;);</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="vg">app</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">5000</span><span class="p">);</span>
+</pre></div>
+<p>说明一下</p>
 
 <h3>session</h3>
 
@@ -361,7 +373,7 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 <ul>
 <li>保证当前session里有用户信息，用户是登陆状态的</li>
 <li>用户在购物页面操作，点击加入购物车，此时在session里增加一条信息，存储当前物品信息</li>
-<li>用户结算的时候，从session获取物品架构和数量，计算出总价，订单完成后，清理session</li>
+<li>用户结算的时候，从session获取物品价格和数量，计算出总价，订单完成后，清理session</li>
 </ul>
 
 <h3>理解模板jade</h3>
@@ -377,37 +389,44 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 <h3>理解public目录</h3>
 
 <ul>
-<li><p>常规做法</p>
-
-<p>app.use(express.static(path.join(__dirname, &#39;public&#39;)));</p></li>
+<li>常规做法</li>
 </ul>
 
-<p>来托管pubblic中得所有文件。</p>
+<p>app.js里</p>
+<div class="highlight"><pre><span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">express</span><span class="o">.</span><span class="vg">static</span><span class="p">(</span><span class="vg">path</span><span class="o">.</span><span class="vg">join</span><span class="p">(</span><span class="vg">__dirname</span><span class="p">,</span><span class="w"> </span><span class="c1">&#39;public&#39;)));</span>
+</pre></div>
+<p>它就是用来托管public中得所有文件。可以以http方式访问</p>
 
-<ul>
-<li>如何在静态页面处理请求参数</li>
-</ul>
+<p>说明</p>
 
-<p>在静态页面处理请求参数，是通过连接地址把参数传递过去，通过前端jacascript取出做处理。</p>
+<p>####如果public/index.html不存在</p>
+
+<p>此时如何使用其他页面做为入口，需要再<code>/</code>路由定义处，redirect到对应页面(by kezhi)。</p>
+
+<h4>如何在静态页面处理请求参数</h4>
+
+<p>在静态页面处理请求参数，是通过连接地址把参数传递过去，通过前端jacascript取出做处理(by kezhi)。</p>
 
 <h4>理解express.static</h4>
 
-<p>区分express.static和http-server的差别</p>
+<p>说明http-server用法</p>
+
+<p>区分express.static和http-server的差别：功能一样，用法上有差异</p>
 
 <p>http-server只做静态托管文件，输出请求文件，无法拦截到请求参数;
 express.static不仅可以托管静态文件，并且提供接口可以拦截到前端页面的请求参数，并且可以控制返回数据;（这句是错的）</p>
 
 <h4>路由冲突</h4>
 
-<p>当public/index.html和路由的<code>/</code>冲突</p>
+<p>当<code>public/index.html</code>和路由的<code>/</code>冲突</p>
 
-<p>此时按照public/index.html走</p>
+<p>此时按照<code>public/index.html</code>走</p>
 
 <h2>任务</h2>
 
 <p>此处开始是大家每个人都必须亲手做的练习</p>
 
-<ul>
+<ol>
 <li>路由定制方式</li>
 <li>如何处理get请求</li>
 <li>如何处理post请求</li>
@@ -417,7 +436,7 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 <li>完成api返回</li>
 <li>完成登陆</li>
 <li>完成购物车</li>
-</ul>
+</ol>
 
 <h3>路由定制方式</h3>
 
@@ -428,7 +447,7 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 <li>使用路由重定向</li>
 </ul>
 
-<h4>常规定义路由:</h4>
+<h4>常规定义路由</h4>
 <div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;express&#39;);</span>
 <span class="vg">var</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">express</span><span class="p">();</span>
 
