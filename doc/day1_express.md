@@ -2,10 +2,58 @@
 
 http://expressjs.com/
 
-## 安装
+Express是一个基于nodejs的web框架，它是基于[connect](https://github.com/senchalabs/connect)中间件的.
 
-- 如何安装
+## 为什么使用Express
+
+- 基于node的异步，性能比较好
+- Express本身比较成熟，目前已经是v4了
+- 有很多大规模应用实例，集群等都非常容易
+
+## 无状态的http协议
+
+大家都明白，我们的Web应用抽象起来就是客户端发出请求，请求到达服务器后，服务器经过一番捣鼓，给客户端发回一个应答。“请求”我们一般抽象成 request，“应答”是 response。服务器和客户端（一般也就是浏览器啦，但是绝不局限于浏览器哦。）之间交流的语言就是 HTTP 协议了。至于服务器怎么折腾出一个应答来的，就八仙过海，各显神通了。
+
+总之，Web 应用中两个重量级的东东就是： Request ， Response 。
+
+前面我们说到，每次有访问进来，我们的代码都会跑一遍。现在的问题是，在我们的代码里，怎么抓到客户端发来的 request , 然后，到哪里去找这个 response ，好把我们捣鼓出来的东西放进去，发给客户端呢？答案是，只要我们把他们作为参数交给 tellme 函数(你可以给这个函数取任何名字甚至不给他名字)，然后，当请求到达时，node.js 就会把客户的请求封装成 request ，预备发给客户的应答封装成 response 。我们拿到 request ，看看他请求些什么，再折腾些东西（读出个文件也好，去查数据库也好，随便你了。）丢进 response ，发给客户端。
+
+TODO: 此处该补出一张express在node中得位置图片
+
+
+## node 基础
+
+see https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day3_node.md
+
+## node 版本的http server
+
+```
+var http = require('http');
+ 
+http.createServer(function(request,response){
+    console.log(request);
+    response.end('Hello world!');
+}).listen(8888);
+```
+
+这就是最简单的实现
+
+
+## 安装Express
+
+- 如何手动安装
 - 如何使用generator
+
+### 如何手动安装
+
+```
+npm init
+npm install --save express
+touch app.js
+node app.js
+```
+
+### 如何使用generator
 
 generator是express命令工具集，首先确保已经安装node和npm,先在全局安装这个工具集:
 	
@@ -27,6 +75,8 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 
 ![Mou icon](./images/expressimg1.jpg)
 
+### 安装依赖
+
 打开package.json，可以看到依赖的模块，执行命令来下载依赖的模块:
 
 	$npm install
@@ -39,10 +89,12 @@ generator是express命令工具集，首先确保已经安装node和npm,先在�
 
 ![Mou icon](./images/expressimg2.jpg)
 
+### 启动服务器
+
 回到app.js层级，执行:
 
 	$npm start
-	
+
 开始运行express打开端口，用浏览器打开http://localhost:3000/，在此估计会出现缺少模块的情况，如果有模块缺少，cd到node_modules文件夹下去安装缺失的模块:
 
 	$sudo npm install xxx(模块名称)
@@ -169,9 +221,17 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 
 HttpServletRequest对象是有关于客户端所发出的请求的对象，只要是有关于客户端请求的信息，都可以藉由它来取得，例如请求标头、请求方法、请求参数、客户端IP，客户端浏览器等等信息。
 
+客户端发来的请求，node.js 帮我们封装成 request 对象
+
+在request里面我们可以获得
+
+- 
+
 ### 响应response
 
 HttpServletResponse对象是有关于对客户端请求之响应，您可以利用它来设定一些要响应的讯息，例如标题信息、响应状态码等.
+
+我们利用response,向客户端发送回答，说白了是向浏览器写内容。
 
 ### session
 
@@ -224,24 +284,23 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 	
 返回给ajax对象:
 
+	oGetBtn.onclick = function(){	
 
-		oGetBtn.onclick = function(){	
-
-			 $.ajax({
-	             type: "GET",
-	             url: "http://localhost:3000/getserver",
-	             data: {
-	             	'method':'GET',
-	             	'name':'rainBow',
-	             	'sex':'man'
-	             },
-	             dataType: "json",
-	             success: function(data){
-                    var str = JSON.stringify(data);
-					oResBox.innerHTML = str;
-                  }
-	         });
-		};
+		 $.ajax({
+	         type: "GET",
+	         url: "http://localhost:3000/getserver",
+	         data: {
+	         	'method':'GET',
+	         	'name':'rainBow',
+	         	'sex':'man'
+	         },
+	         dataType: "json",
+	         success: function(data){
+	            var str = JSON.stringify(data);
+				oResBox.innerHTML = str;
+	          }
+	     });
+	};
 		
 点击GET按钮发送GET请求，并把发出去的参数整理成json格式并返回:
 
@@ -256,25 +315,38 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 	router.post('/', function(req, res) {
 		res.send(req.body);
 	});
+	
 
 点击按钮post发送post请求:
 
-			$.ajax({
-	             type: "POST",
-	             url: "http://localhost:3000/getserver",
-	             data: {
-	             	'method':'POST',
-	             	'name':'rainBow',
-	             	'sex':'man'
-	             },
-	             dataType: "json",
-	             success: function(data){
-	                var str = JSON.stringify(data);
-					oResBox.innerHTML = str;
-	              }
-	         });
+	$.ajax({
+	     type: "POST",
+	     url: "http://localhost:3000/getserver",
+	     data: {
+	     	'method':'POST',
+	     	'name':'rainBow',
+	     	'sex':'man'
+	     },
+	     dataType: "json",
+	     success: function(data){
+	        var str = JSON.stringify(data);
+			oResBox.innerHTML = str;
+	      }
+	 });
 	         
 ![Mou icon](./images/expressimg5.jpg)
+
+更多，带有参数的post请求
+
+	router.post('/post/:id', function(req, res) {
+		res.status(200).json({
+			data:{
+				id:req.param('id'),
+				name:'sss',
+				kkk:req.body.kkk
+			}
+		})
+	});
 
 ### 如何实现文件上传
 
@@ -312,7 +384,12 @@ query处理get请求参数，整理成json各式:
 - `npm start` vs `npm test` (scripts自定义)
 - 如何写一个npm，以及发布
 
+## 更多
 
+- connect
+- express框架源码
+- 反向代理（proxy，比如haproxy，nginx）
+- 集群部署
 ## 总结
 
 
