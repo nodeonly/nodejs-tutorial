@@ -28,11 +28,11 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 TODO: 此处该补出一张express在node中得位置图片
 
 
-## node 基础
+## Node 基础
 
 see [node 基础](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day3_node.md)
 
-## node 版本的http server
+## Node 版本的http server
 
 ```
 var http = require('http');
@@ -45,7 +45,7 @@ http.createServer(function(request,response){
 
 这就是最简单的实现
 
-## node connect 版本的http server
+## Node connect 版本的http server
 Connect is an extensible HTTP server framework for node using "plugins" known as middleware.
 
 ```
@@ -297,7 +297,7 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 - 常规做法
 - 使用路由重定向
 
-#### 常规定义路由:
+#### 常规定义路由
 
 	var express = require('express');
 	var app = express();

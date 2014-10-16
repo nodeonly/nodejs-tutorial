@@ -174,6 +174,38 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 </pre></div>
 <p>这就是最简单的实现</p>
 
+<h2>node connect 版本的http server</h2>
+
+<p>Connect is an extensible HTTP server framework for node using &quot;plugins&quot; known as middleware.</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">connect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;connect&#39;)</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;http&#39;)</span>
+
+<span class="vg">var</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">connect</span><span class="p">()</span>
+
+<span class="o">//</span><span class="w"> </span><span class="vg">gzip</span><span class="o">/</span><span class="vg">deflate</span><span class="w"> </span><span class="vg">outgoing</span><span class="w"> </span><span class="vg">responses</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">compression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;compression&#39;)</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">compression</span><span class="p">())</span>
+
+<span class="o">//</span><span class="w"> </span><span class="vg">store</span><span class="w"> </span><span class="vg">session</span><span class="w"> </span><span class="vg">state</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">browser</span><span class="w"> </span><span class="vg">cookie</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">cookieSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;cookie-session&#39;)</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">cookieSession</span><span class="p">({</span>
+<span class="w">    </span><span class="nl">keys:</span><span class="w"> </span><span class="p">[</span><span class="c1">&#39;secret1&#39;, &#39;secret2&#39;]</span>
+<span class="p">}))</span>
+
+<span class="o">//</span><span class="w"> </span><span class="vg">parse</span><span class="w"> </span><span class="vg">urlencoded</span><span class="w"> </span><span class="vg">request</span><span class="w"> </span><span class="vg">bodies</span><span class="w"> </span><span class="vg">into</span><span class="w"> </span><span class="vg">req</span><span class="o">.</span><span class="vg">body</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">bodyParser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;body-parser&#39;)</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">bodyParser</span><span class="o">.</span><span class="vg">urlencoded</span><span class="p">())</span>
+
+<span class="o">//</span><span class="w"> </span><span class="vg">respond</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">all</span><span class="w"> </span><span class="vg">requests</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">function</span><span class="p">(</span><span class="vg">req</span><span class="p">,</span><span class="w"> </span><span class="vg">res</span><span class="p">){</span>
+<span class="w">  </span><span class="vg">res</span><span class="o">.</span><span class="vg">end</span><span class="p">(</span><span class="c1">&#39;Hello from Connect!\n&#39;);</span>
+<span class="p">})</span>
+
+<span class="o">//</span><span class="vg">create</span><span class="w"> </span><span class="vg">node</span><span class="o">.</span><span class="vg">js</span><span class="w"> </span><span class="vg">http</span><span class="w"> </span><span class="vg">server</span><span class="w"> </span><span class="vg">and</span><span class="w"> </span><span class="vg">listen</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">port</span>
+<span class="vg">http</span><span class="o">.</span><span class="vg">createServer</span><span class="p">(</span><span class="vg">app</span><span class="p">)</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">3000</span><span class="p">)</span>
+</pre></div>
+<p>这是官方给出的例子</p>
+
 <h2>安装Express</h2>
 
 <ul>
