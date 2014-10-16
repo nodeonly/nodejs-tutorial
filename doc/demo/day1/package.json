@@ -4,7 +4,7 @@
   "description": "express",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/supervisor ./bin/www",
+    "start": "node_modules/.bin/supervisor ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -15,6 +15,7 @@
   ],
   "author": "kezhi",
   "license": "3000",
+
   "dependencies": {
     "express": "^4.9.7",
     "body-parser": "^1.9.0"

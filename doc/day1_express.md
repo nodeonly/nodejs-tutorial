@@ -52,7 +52,7 @@ write a npm and publish npmjs.org
 
 `--save-dev` 保存到开发阶段的依赖列表，如添加进程监控，当文件改变时自动刷新：
 
-	$ npm install  --save-dev express
+	$ npm install  --save-dev supervisor
 
 ```
 "scripts": {

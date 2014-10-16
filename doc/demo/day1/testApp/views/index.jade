@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+      .box
+         label
+             | name:
+         input(name='user[name]')
+         input(type='button' value='get' id='get')
+
+      .box
+          label
+              | name:
+          input(name='user[name]')
+          input(type='button' value='post' id='post')
