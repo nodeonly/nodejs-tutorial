@@ -30,7 +30,7 @@ TODO: 此处该补出一张express在node中得位置图片
 
 ## node 基础
 
-see https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day3_node.md
+see [node 基础](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day3_node.md)
 
 ## node 版本的http server
 
