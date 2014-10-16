@@ -16,7 +16,22 @@ router.get('/get', function(req, res) {
 	console.log(req.query)
 });
 
+router.post("/login",function(req,res) {
+	res.status(200).json({
+		data:{
+			name:'zhi.ke',
+			password:'123'
+		},
+		status:{
+			code: 0,
+			msg : 'success'
+		}
+	});
+	if(req.body.name==''){
+		req.flash('no')
+	}
 
+});
 
 
 /* GET home page. */
@@ -36,7 +51,7 @@ router.get('/get', function(req, res) {
 router.post('/post/:id', function(req, res) {
 	res.status(200).json({
 		data:{
-			id:1,
+			id:req.param('id'),
 			name:'kkk',
 			number:req.body.number
 
