@@ -119,7 +119,9 @@ Expressy已经内置了debug模块，如果要用debug运行app.js:
 
 ### 知道如何查api文档
 
+中文文档地址 
 
+http://www.expressjs.com.cn
 
 ## 核心概念
 
@@ -129,6 +131,9 @@ Express 是一个简洁、灵活的 node.js Web 应用开发框架, 它提供一
 
 - 常规做法
 - 如何在静态页面处理请求参数
+
+在静态页面处理请求参数，是通过连接地址把参数传递过去，通过前端jacascript取出做处理。
+
 
 理解express.static和http-server的差别
 
