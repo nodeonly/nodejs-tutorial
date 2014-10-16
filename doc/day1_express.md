@@ -315,7 +315,7 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 
 ### 准备工作
 
-安装supervisor
+安装supervisor(by kezhi)
 
 
 ### 路由定制方式
