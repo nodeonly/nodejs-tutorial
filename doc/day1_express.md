@@ -218,6 +218,7 @@ Response对象是有关于对客户端请求之响应，可以利用它来设定
 ```
 	
 说明一下
+例如定义两个路由，一个对应get请求，一个对应post请求；
 
 ### session
 
@@ -288,9 +289,6 @@ app.js里
 说明http-server用法
 
 区分express.static和http-server的差别：功能一样，用法上有差异
-
-http-server只做静态托管文件，输出请求文件，无法拦截到请求参数;
-express.static不仅可以托管静态文件，并且提供接口可以拦截到前端页面的请求参数，并且可以控制返回数据;（这句是错的）
 
 #### 路由冲突
 
@@ -398,19 +396,7 @@ module.exports = router;
 
 	/* GET http.*/
 	router.get('/', function(req, res) {
-		var sUrl = req.url;
-		var arr = sUrl.split('?');
-		var arrReq = arr[1].split('&');
-		var resJson = {};
-
-		for(var i=0; i<arrReq.length; i++){
-			//['xx=xx','xx=xx']
-			var newarr = arrReq[i].split('=');
-			var attr = newarr[0];
-			var value = newarr[1];
-			resJson[attr] = value;
-		};
-		res.send(resJson);
+		res.send(req.query);
 	});
 
 	module.exports = router;
