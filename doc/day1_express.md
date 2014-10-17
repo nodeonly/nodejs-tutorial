@@ -218,7 +218,19 @@ Response对象是有关于对客户端请求之响应，可以利用它来设定
 ```
 	
 说明一下
-例如定义两个路由，一个对应get请求，一个对应post请求；
+例如定义两个路由，一个对应get请求，一个对应post请求；当客户端向http://localhost:5000/发送get请求的时候，则会触发:
+
+```
+app.get('/',function(req,res){
+    res.send('hello,world');
+});
+```
+当客户端向http://localhost:5000/someur发送post请求的时候，则会触发:
+
+```
+app.post('/someur',function(req,res){
+    res.send('hello,world');
+});
 
 ### session
 
