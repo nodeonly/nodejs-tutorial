@@ -231,7 +231,7 @@ app.get('/',function(req,res){
 app.post('/someur',function(req,res){
     res.send('hello,world');
 });
-
+```
 ### session
 
 一个session就是一系列某用户和服务器间的通讯。服务器有能力分辨出不同的用户。
