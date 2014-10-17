@@ -275,6 +275,38 @@ https://github.com/expressjs/session
 
 以及如何用生成器指定模板
 
+####jade node模板引擎
+
+此引擎构建在node之上，需要经过node编译成html代码，例如:
+
+```
+var app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+```
+开启express服务，指定模板路径为views，模板引擎为jade，当客户端访问指定路由时，express便会去给对应的jade文件配置参数，并编译此jade模板:
+
+```
+router.get('/', function(req, res) {
+  res.render('index', { title: 'Express' });
+});
+```
+
+index jade模板:
+
+```
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+```
+最终在客户端输出:
+
+![Mou icon](./images/expressimg3.jpg)
+
+
 ### 理解public目录
 
 - 常规做法
