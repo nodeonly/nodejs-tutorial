@@ -393,7 +393,7 @@ module.exports = router;
 
 我们可以在一个html文件里向端口发送get请求，首先要在访问http://localhost:3000下，端口能向浏览器输出此html，默认情况下，express是会输出pubblic文件夹下的index.html文件，在没有特别指明的情况下，所以注释掉:
 
-	//app.use('/', routes);
+	app.use('/', routes);
 	
 这样在get请求的url为'/'时，express会找到pubblic文件夹;我们可以自定义路由:
 
