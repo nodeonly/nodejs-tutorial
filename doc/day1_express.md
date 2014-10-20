@@ -27,6 +27,7 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 
 TODO: 此处该补出一张express在node中得位置图片
 
+![Mou icon](./images/expressimg9.jpg)
 
 
 ## Node 基础
@@ -218,7 +219,20 @@ Response对象是有关于对客户端请求之响应，可以利用它来设定
 ```
 	
 说明一下
+例如定义两个路由，一个对应get请求，一个对应post请求；当客户端向http://localhost:5000/发送get请求的时候，则会触发:
 
+```
+app.get('/',function(req,res){
+    res.send('hello,world');
+});
+```
+当客户端向http://localhost:5000/someur发送post请求的时候，则会触发:
+
+```
+app.post('/someur',function(req,res){
+    res.send('hello,world');
+});
+```
 ### session
 
 一个session就是一系列某用户和服务器间的通讯。服务器有能力分辨出不同的用户。
@@ -262,6 +276,38 @@ https://github.com/expressjs/session
 
 以及如何用生成器指定模板
 
+####jade node模板引擎
+
+此引擎构建在node之上，需要经过node编译成html代码，例如:
+
+```
+var app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+```
+开启express服务，指定模板路径为views，模板引擎为jade，当客户端访问指定路由时，express便会去给对应的jade文件配置参数，并编译此jade模板:
+
+```
+router.get('/', function(req, res) {
+  res.render('index', { title: 'Express' });
+});
+```
+
+index jade模板:
+
+```
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+```
+最终在客户端输出:
+
+![Mou icon](./images/expressimg3.jpg)
+
+
 ### 理解public目录
 
 - 常规做法
@@ -288,9 +334,6 @@ app.js里
 说明http-server用法
 
 区分express.static和http-server的差别：功能一样，用法上有差异
-
-http-server只做静态托管文件，输出请求文件，无法拦截到请求参数;
-express.static不仅可以托管静态文件，并且提供接口可以拦截到前端页面的请求参数，并且可以控制返回数据;（这句是错的）
 
 #### 路由冲突
 
@@ -383,7 +426,7 @@ module.exports = router;
 
 我们可以在一个html文件里向端口发送get请求，首先要在访问http://localhost:3000下，端口能向浏览器输出此html，默认情况下，express是会输出pubblic文件夹下的index.html文件，在没有特别指明的情况下，所以注释掉:
 
-	//app.use('/', routes);
+	app.use('/', routes);
 	
 这样在get请求的url为'/'时，express会找到pubblic文件夹;我们可以自定义路由:
 
@@ -398,19 +441,7 @@ module.exports = router;
 
 	/* GET http.*/
 	router.get('/', function(req, res) {
-		var sUrl = req.url;
-		var arr = sUrl.split('?');
-		var arrReq = arr[1].split('&');
-		var resJson = {};
-
-		for(var i=0; i<arrReq.length; i++){
-			//['xx=xx','xx=xx']
-			var newarr = arrReq[i].split('=');
-			var attr = newarr[0];
-			var value = newarr[1];
-			resJson[attr] = value;
-		};
-		res.send(resJson);
+		res.send(req.query);
 	});
 
 	module.exports = router;
@@ -525,6 +556,11 @@ query处理get请求参数，整理成json各式:
 
 试着说明package.json的众多方面
 
+<<<<<<< HEAD
+=======
+#### package.json
+
+>>>>>>> 88bde3a1c7f02d2e44171c6bfaa2a5b86e878451
 package.json是描述项目文件，描述项目所依赖的模块，当我们把一个项目发布到npm时，其实不用把我们所依赖的模块一起发不上去，只需要把依赖的模块名称填写到package.json里面，当别人npm install的时候，npm会去识别package.json中所依赖的模块名称，然后下载下来:
 
 - `npm install --save`  vs `npm install --save-dev`
@@ -533,10 +569,85 @@ package.json是描述项目文件，描述项目所依赖的模块，当我们�
 
 当我们通过npm安装某一模块时，运用`npm install --save`或者`npm install --save-dev`，npm则会把我们的项目依赖信息写入package.json中。
 
+<<<<<<< HEAD
 `npm install --save`  和 `npm install --save-dev`的区别:
 
 devDependencies下列出的模块，是我们开发时用的，比如grunt-contrib-uglify，我们用它混淆js文件，它们不会被部署到生产环境。dependencies下的模块，则是我们生产环境中需要的依赖。
 
+=======
+#### npm install --save  和 npm install --save-dev的区别:
+
+devDependencies下列出的模块，是我们开发时用的，比如grunt-contrib-uglify，我们用它混淆js文件，它们不会被部署到生产环境。dependencies下的模块，则是我们生产环境中需要的依赖。
+
+#### npm start
+
+新建项目npmStart:
+
+![Mou icon](./images/npmstart.png)
+
+配置package.json中得script参数:
+
+```
+{
+  "name": "example1",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node http.js"
+  }
+}
+```
+cd到此目录，运行:
+
+```
+$npm start
+```
+即可运行http.js文件，这就相当于是node http.js的快捷运行方式。
+
+#### npm发布模块
+
+如果需要向npm发布自己的模块，那么需要注册账号密码，终端运行:
+
+```
+$npm adduser
+```
+按照提示填写账号密码邮箱，新建项目，配置package.json文件:
+
+```
+{
+  "name": "hellonpm",
+  "description": "hello world test app",
+  "version": "0.0.1",
+  "private": false,
+  "dependencies": {
+    "express": "2.5.9",
+    "ejs":"0.4.2",
+    "superagent":"0.3.0"
+  }
+}
+```
+name即为我们的模块名称，要注意的是private必须设置为false，模块才能被发布，dependencies是指我们的模块需要依赖哪些其他的模块,cd到express文件夹下:
+
+![Mou icon](./images/npm.jpg)
+
+终端运行:
+
+```
+$npm publish
+```
+
+![Mou icon](./images/npm2.jpg)
+
+模块发布成功！
+
+cd到任意文件夹运行:
+
+```
+$npm install hellonpm
+```
+即可安装我们上传的hellonpm模块！
+
+>>>>>>> 88bde3a1c7f02d2e44171c6bfaa2a5b86e878451
 
 
 ## 阅读文档

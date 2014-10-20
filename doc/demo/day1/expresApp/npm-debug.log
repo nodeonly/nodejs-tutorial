@@ -1,26 +1,26 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
-2 info using npm@1.4.3
-3 info using node@v0.10.26
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
+2 info using npm@1.4.14
+3 info using node@v0.10.29
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart expresApp@0.0.0
-6 info start expresApp@0.0.0
+5 info prestart example1@0.0.0
+6 info start example1@0.0.0
 7 verbose unsafe-perm in lifecycle true
-8 info expresApp@0.0.0 Failed to exec start script
-9 error expresApp@0.0.0 start: `node ./bin/www`
+8 info example1@0.0.0 Failed to exec start script
+9 error example1@0.0.0 start: `node ./bin/www`
 9 error Exit status 8
-10 error Failed at the expresApp@0.0.0 start script.
-10 error This is most likely a problem with the expresApp package,
+10 error Failed at the example1@0.0.0 start script.
+10 error This is most likely a problem with the example1 package,
 10 error not with npm itself.
 10 error Tell the author that this fails on your system:
 10 error     node ./bin/www
 10 error You can get their info via:
-10 error     npm owner ls expresApp
+10 error     npm owner ls example1
 10 error There is likely additional logging output above.
 11 error System Darwin 13.3.0
-12 error command "/usr/local/bin/node" "/usr/local/bin/npm" "start"
-13 error cwd /Users/kezhi/workspace/git/nodejs-tutorial/doc/demo/day1/expresApp
-14 error node -v v0.10.26
-15 error npm -v 1.4.3
+12 error command "node" "/usr/local/bin/npm" "start"
+13 error cwd /Users/apple/Documents/www/nodejs-tutorial/doc/demo/day1/example1
+14 error node -v v0.10.29
+15 error npm -v 1.4.14
 16 error code ELIFECYCLE
 17 verbose exit [ 1, true ]
