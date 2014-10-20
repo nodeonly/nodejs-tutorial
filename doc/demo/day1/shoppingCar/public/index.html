@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title> 
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<link type="image/x-icon" href="favicon.ico" rel="icon">
+	<script type="text/javascript" src="javascripts/jquery.js"></script>
+	<script>
+	window.onload = function(){
+
+		var oLogin = document.getElementById('login');
+		var oRegister = document.getElementById('register');
+
+		oLogin.onclick = function(){	
+			var sName = $('#usrname').val();
+			var sPassword = $('#password').val();
+			 $.ajax({
+	             type: "POST",
+	             url: "http://localhost:3000/login",
+	             data: {
+	             	'name':sName,
+	             	'sex':sPassword
+	             },
+	             dataType: "json",
+	             success: function(data){
+                    if(data.code){
+	                	alert('登陆成功!');
+	                };
+                  }
+	         });
+		};
+
+		oRegister.onclick = function(){
+			var sName = $('#usrname').val();
+			var sPassword = $('#password').val();
+
+			$.ajax({
+	             type: "POST",
+	             url: "http://localhost:3000/register",
+	             data: {
+	             	'name':sName,
+	             	'sex':sPassword
+	             },
+	             dataType: "json",
+	             success: function(data){
+	                if(data.code){
+	                	alert('注册成功，请登陆!');
+	                };
+	              }
+	         });
+		};
+	};
+	</script>
+</head>
+<body>	
+	<header>ShoppingCar</header>
+	<div id="loginBox" class="loginBox">
+		<div class="loginTitle">Login</div>
+		<div class="form">
+			<li><span>usrname:</span><input id="usrname" type="text"></li>
+			<li><span>password:</span><input id="password" type="password"></li>
+			<div id="login" class="login submit">Login</div>
+			<div id="register" class="register submit">Register</div>
+		</div>
+	</div>
+</body>
+</html>
