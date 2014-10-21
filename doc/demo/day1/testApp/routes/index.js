@@ -27,10 +27,13 @@ router.post("/login",function(req,res) {
 			msg : 'success'
 		}
 	});
-	if(req.body.name==''){
-		req.flash('no')
+	console.log(req.body);
+	/*if(req.body.name=='kezhi'&&req.body.password=='111'){
+		res.send('ok')
+	}else{
+		res.send('no');
 	}
-
+*/
 });
 
 
@@ -62,5 +65,28 @@ router.post('/post/:id', function(req, res) {
 		}
 	})
 });
+
+
+//router.post("/login", checkNotLogin);
+/*router.post("/login",function(req,res) {
+	var md5 = crypto.createHash('md5');
+	var password = md5.update(req.body.password).digest('base64');
+
+	User.get(req.body.username, function(err, user) {
+		if (!user) {
+			req.flash('error', '用户不存在');
+//			return res.redirect('/login');
+		}
+
+		if (user.password != password) {
+			req.flash('error', '用户名或密码错误');
+//			return res.redirect('/login');
+		}
+		req.session.user = user;
+		req.flash('success', req.session.user.name + '登录成功');
+//		res.redirect('/blog');
+	});
+});*/
+
 
 module.exports = router;

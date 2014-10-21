@@ -1,0 +1,40 @@
+var Assert, Browser, Path, Resources, listen, visit;
+
+Assert = require("./assert");
+
+Resources = require("./resources");
+
+Browser = require("./browser");
+
+Path = require("path");
+
+visit = function(url, options, callback) {
+  var browser, _ref;
+  if (arguments.length === 2) {
+    _ref = [null, options], options = _ref[0], callback = _ref[1];
+  }
+  browser = Browser.create(options);
+  if (callback) {
+    return browser.visit(url, options, function(error) {
+      return callback(error, browser);
+    });
+  } else {
+    return browser.visit(url, options).then(function() {
+      return browser;
+    });
+  }
+};
+
+listen = function(port, callback) {
+  return require("./zombie/protocol").listen(port, callback);
+};
+
+Browser.listen = listen;
+
+Browser.visit = visit;
+
+Browser.Assert = Assert;
+
+Browser.Resources = Resources;
+
+module.exports = Browser;

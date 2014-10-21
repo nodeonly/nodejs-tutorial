@@ -8,7 +8,21 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
+
 var app = express();
+
+app.use(session({
+	store: new RedisStore({
+		host: "127.0.0.1",
+		port: 6379
+	}),
+	resave:false,
+	saveUninitialized:false,
+	secret: 'exam node only'
+}));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +38,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+
+/*app.use(function (req, res, next) {
+	if (!req.session) {
+		return next(new Error('oh no sesssion')) // handle error
+	}
+	next(); // otherwise continue
+});*/
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

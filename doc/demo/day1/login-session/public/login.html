@@ -1,0 +1,36 @@
+<meta charset='utg-8'/>
+
+<body>
+	
+	<div class='login_form'>
+		<input type='text' name='name' value='sang'></br>
+		<input type='text' name='password' value='000000'></br>
+		<input id='login_btn' type='button' value='login'>
+	</div>
+</body>
+
+<script src='javascripts/jquery.js'></script>
+
+<script>
+$(function(){
+	
+	$('#login_btn').click(function(){
+
+		var u_name = $("input[name='name']").val();
+		var u_password = $("input[name='password']").val();
+
+ 
+		
+		$.post( "login.do", { 'username':u_name,'password':u_password }, function( data ) {
+		  console.log( data.data[0].username ); // John
+			if(data.status.code==0){
+				alert('登录成功')
+				window.location.href = '/'
+			}
+		}, "json");
+		
+		
+	});
+});
+	
+</script>
