@@ -1,5 +1,18 @@
 var express = require('express');
 var router = express.Router();
+<<<<<<< HEAD
+
+/* GET home page. */
+router.post('/', function(req, res) {
+	if(req.session.name){
+		console.log('yes');
+	}else{
+		console.log('no');
+	};
+ 	res.send({
+ 		code:'0'
+ 	});
+=======
 var userArr = require('./userjson.js');
 
 function findJson(arr,str){
@@ -61,6 +74,7 @@ router.post('/', function(req, res) {
 	console.log(userArr);
 	//console.log(1);
 
+>>>>>>> 88bde3a1c7f02d2e44171c6bfaa2a5b86e878451
 });
 
 module.exports = router;

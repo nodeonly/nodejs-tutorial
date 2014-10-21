@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+<<<<<<< HEAD
+=======
 var userArr = require('./userjson.js');
 
 function findJson(arr,str){
@@ -12,10 +14,17 @@ function findJson(arr,str){
 
 	return false;
 };
+>>>>>>> 88bde3a1c7f02d2e44171c6bfaa2a5b86e878451
 
 /* GET home page. */
 router.post('/', function(req, res) {
 	var reqJson = req.body;
+<<<<<<< HEAD
+	req.session.name = reqJson.name; 
+ 	res.send({
+ 		code:0
+ 	});
+=======
 
 	/*{
 		'name':'xxx',
@@ -48,6 +57,7 @@ router.post('/', function(req, res) {
 
 	};
  	console.log(userArr);
+>>>>>>> 88bde3a1c7f02d2e44171c6bfaa2a5b86e878451
 });
 
 module.exports = router;

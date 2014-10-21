@@ -10,6 +10,8 @@
 	<script>
 	window.onload = function(){
 
+<<<<<<< HEAD
+=======
 		function reminder(msg){
 			$('body').append('<div class="store_suc"></div>');
 			$('.store_suc').html(msg).css('display','block').stop().animate({opacity:0.5},200,function(){
@@ -24,6 +26,7 @@
 			});
 		};
 
+>>>>>>> 88bde3a1c7f02d2e44171c6bfaa2a5b86e878451
 		var oLogin = document.getElementById('login');
 		var oRegister = document.getElementById('register');
 
@@ -35,6 +38,14 @@
 	             url: "http://localhost:3000/login",
 	             data: {
 	             	'name':sName,
+<<<<<<< HEAD
+	             	'sex':sPassword
+	             },
+	             dataType: "json",
+	             success: function(data){
+                    if(data.code){
+	                	alert('登陆成功!');
+=======
 	             	'password':sPassword
 	             },
 	             dataType: "json",
@@ -44,6 +55,7 @@
 	                	$('.loginBox').fadeOut(500);;
 	                }else{
 	                	reminder(data.msg.detail);
+>>>>>>> 88bde3a1c7f02d2e44171c6bfaa2a5b86e878451
 	                };
                   }
 	         });
@@ -58,6 +70,14 @@
 	             url: "http://localhost:3000/register",
 	             data: {
 	             	'name':sName,
+<<<<<<< HEAD
+	             	'sex':sPassword
+	             },
+	             dataType: "json",
+	             success: function(data){
+	                if(data.code){
+	                	alert('注册成功，请登陆!');
+=======
 	             	'password':sPassword
 	             },
 	             dataType: "json",
@@ -66,6 +86,7 @@
 	                	reminder('注册成功，请登陆!');
 	                }else{
 	                	reminder(data.msg.detail);
+>>>>>>> 88bde3a1c7f02d2e44171c6bfaa2a5b86e878451
 	                };
 	              }
 	         });

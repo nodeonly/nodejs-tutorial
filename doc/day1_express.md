@@ -29,6 +29,7 @@ TODO: 此处该补出一张express在node中得位置图片
 
 ![Mou icon](./images/expressimg9.jpg)
 
+
 ## Node 基础
 
 see [node 基础](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day3_node.md)
@@ -555,6 +556,7 @@ query处理get请求参数，整理成json各式:
 
 试着说明package.json的众多方面
 
+ 
 #### package.json
 
 package.json是描述项目文件，描述项目所依赖的模块，当我们把一个项目发布到npm时，其实不用把我们所依赖的模块一起发不上去，只需要把依赖的模块名称填写到package.json里面，当别人npm install的时候，npm会去识别package.json中所依赖的模块名称，然后下载下来:
@@ -565,6 +567,11 @@ package.json是描述项目文件，描述项目所依赖的模块，当我们�
 
 当我们通过npm安装某一模块时，运用`npm install --save`或者`npm install --save-dev`，npm则会把我们的项目依赖信息写入package.json中。
 
+
+`npm install --save`  和 `npm install --save-dev`的区别:
+
+devDependencies下列出的模块，是我们开发时用的，比如grunt-contrib-uglify，我们用它混淆js文件，它们不会被部署到生产环境。dependencies下的模块，则是我们生产环境中需要的依赖。
+ 
 #### npm install --save  和 npm install --save-dev的区别:
 
 devDependencies下列出的模块，是我们开发时用的，比如grunt-contrib-uglify，我们用它混淆js文件，它们不会被部署到生产环境。dependencies下的模块，则是我们生产环境中需要的依赖。
@@ -638,6 +645,16 @@ $npm install hellonpm
 即可安装我们上传的hellonpm模块！
 
 
+## 测试
+
+```
+npm install --save-dev mocha
+npm install --save-dev chai
+npm install --save-dev sinon
+npm install --save-dev supertest
+npm install --save-dev zombie
+```
+
 
 ## 阅读文档
 
@@ -707,6 +724,11 @@ http://www.expressjs.com.cn
 	}))
 	```
 - dsdsds
+
+
+
+
+
 ## 总结
 
 

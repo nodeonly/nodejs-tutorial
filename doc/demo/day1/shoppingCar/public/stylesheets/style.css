@@ -95,6 +95,8 @@ header{
 }
 .register{
 	top:170px;
+<<<<<<< HEAD
+=======
 }
 .store_suc{
 	background:black;
@@ -109,4 +111,5 @@ header{
 	padding:29px 26px;
 	text-align:center;
 	z-index:1000;
+>>>>>>> 88bde3a1c7f02d2e44171c6bfaa2a5b86e878451
 }

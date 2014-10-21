@@ -234,7 +234,14 @@ https://lodash.com/docs
 
 	npm install --save lodash
 
+
+## promised pattern
+
+- Q
+- https://github.com/teambition/then.js
+
 ## url
+
 http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4#route-middleware
 
 
