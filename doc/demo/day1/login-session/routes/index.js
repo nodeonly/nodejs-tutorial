@@ -68,41 +68,43 @@ router.post('/login.do',function(req,res){
 });
 
 router.post('/register.do',function(req,res){
-	/*var newUser = {
-	    name: req.body.username,
-	    password: req.body.password
-    };
-    req.session.user = newUser;
-    res.status(200).json({
-    	data:newUser,
-    	status:{
-    		code:0,
-    		msg:'success'
-    	}
-    });
-    res.redirect('/login.html');*/
 	var user = new model.User({
 		username:req.body['username'],
 		password:req.body['password']
 	});
-
-	user.save(function (err, user) {
-		if(!err) {
-			if(!user);
-//			res.redirect('/')
-			res.status(200).json({
-				data:{
-					user_id:user._id
+	model.User.find(user.username,function(err,result){
+		if(result){
+			console.log('用户已存在');
+			res.send({
+				"status": {
+					"code": 0,
+					"message": "用户已存在"
 				},
-				status:{
-					code:0,
-					msg:'success'
-				}
+				"data": {}
 			});
 		}
+		user.save(function (err, user) {
+			if(!err) {
+				if(!user);
+				//			res.redirect('/')
+				res.status(200).json({
+					data:{
+						user_id:user._id
+					},
+					status:{
+						code:0,
+						msg:'success'
+					}
+				});
+			}
+			console.log(user);
+		});
 
-	});
-	console.log(req.body.user);
+
+
+
+	})
+	
 
 }) ;
 
