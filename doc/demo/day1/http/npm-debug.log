@@ -1,0 +1,119 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'connect-multiparty',
+1 verbose cli   '–save' ]
+2 info using npm@1.4.23
+3 info using node@v0.10.31
+4 verbose readDependencies using package.json deps
+5 verbose cache add [ 'connect-multiparty', null ]
+6 verbose cache add name=undefined spec="connect-multiparty" args=["connect-multiparty",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'connect-multiparty',
+7 verbose parsed url   path: 'connect-multiparty',
+7 verbose parsed url   href: 'connect-multiparty' }
+8 verbose cache add [ '–save', null ]
+9 verbose cache add name=undefined spec="–save" args=["–save",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: '–save',
+10 verbose parsed url   path: '–save',
+10 verbose parsed url   href: '–save' }
+11 silly lockFile e67adb06-connect-multiparty connect-multiparty
+12 verbose lock connect-multiparty /Users/sang/.npm/e67adb06-connect-multiparty.lock
+13 silly lockFile 38d7024e-save –save
+14 verbose lock –save /Users/sang/.npm/38d7024e-save.lock
+15 silly lockFile e67adb06-connect-multiparty connect-multiparty
+16 silly lockFile e67adb06-connect-multiparty connect-multiparty
+17 silly lockFile 38d7024e-save –save
+18 silly lockFile 38d7024e-save –save
+19 verbose addNamed [ 'connect-multiparty', '' ]
+20 verbose addNamed [ null, '*' ]
+21 silly lockFile 9ca6e29f-connect-multiparty connect-multiparty@
+22 verbose lock connect-multiparty@ /Users/sang/.npm/9ca6e29f-connect-multiparty.lock
+23 verbose addNamed [ '–save', '' ]
+24 verbose addNamed [ null, '*' ]
+25 silly lockFile 0fa5ff4a-save –save@
+26 verbose lock –save@ /Users/sang/.npm/0fa5ff4a-save.lock
+27 silly addNameRange { name: 'connect-multiparty', range: '*', hasData: false }
+28 silly addNameRange { name: '–save', range: '*', hasData: false }
+29 verbose request where is /connect-multiparty
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id b9879643aae1aed5
+32 verbose url raw /connect-multiparty
+33 verbose url resolving [ 'https://registry.npmjs.org/', './connect-multiparty' ]
+34 verbose url resolved https://registry.npmjs.org/connect-multiparty
+35 verbose request where is https://registry.npmjs.org/connect-multiparty
+36 info trying registry request attempt 1 at 15:04:16
+37 http GET https://registry.npmjs.org/connect-multiparty
+38 verbose request where is /–save
+39 verbose request registry https://registry.npmjs.org/
+40 verbose url raw /–save
+41 verbose url resolving [ 'https://registry.npmjs.org/', './%E2%80%93save' ]
+42 verbose url resolved https://registry.npmjs.org/%E2%80%93save
+43 verbose request where is https://registry.npmjs.org/%E2%80%93save
+44 info trying registry request attempt 1 at 15:04:16
+45 http GET https://registry.npmjs.org/%E2%80%93save
+46 http 404 https://registry.npmjs.org/%E2%80%93save
+47 verbose headers { date: 'Fri, 31 Oct 2014 07:04:17 GMT',
+47 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+47 verbose headers   'content-type': 'application/json',
+47 verbose headers   'cache-control': 'max-age=0',
+47 verbose headers   'content-length': '52',
+47 verbose headers   'accept-ranges': 'bytes',
+47 verbose headers   via: '1.1 varnish',
+47 verbose headers   age: '0',
+47 verbose headers   'x-served-by': 'cache-ty67-TYO',
+47 verbose headers   'x-cache': 'MISS',
+47 verbose headers   'x-cache-hits': '0',
+47 verbose headers   'x-timer': 'S1414739057.139485,VS0,VE116',
+47 verbose headers   'keep-alive': 'timeout=10, max=50',
+47 verbose headers   connection: 'Keep-Alive' }
+48 silly registry.get cb [ 404,
+48 silly registry.get   { date: 'Fri, 31 Oct 2014 07:04:17 GMT',
+48 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+48 silly registry.get     'content-type': 'application/json',
+48 silly registry.get     'cache-control': 'max-age=0',
+48 silly registry.get     'content-length': '52',
+48 silly registry.get     'accept-ranges': 'bytes',
+48 silly registry.get     via: '1.1 varnish',
+48 silly registry.get     age: '0',
+48 silly registry.get     'x-served-by': 'cache-ty67-TYO',
+48 silly registry.get     'x-cache': 'MISS',
+48 silly registry.get     'x-cache-hits': '0',
+48 silly registry.get     'x-timer': 'S1414739057.139485,VS0,VE116',
+48 silly registry.get     'keep-alive': 'timeout=10, max=50',
+48 silly registry.get     connection: 'Keep-Alive' } ]
+49 silly lockFile 0fa5ff4a-save –save@
+50 silly lockFile 0fa5ff4a-save –save@
+51 error 404 404 Not Found: %E2%80%93save
+51 error 404
+51 error 404 '%E2%80%93save' is not in the npm registry.
+51 error 404 You should bug the author to publish it
+51 error 404 It was specified as a dependency of 'http'
+51 error 404
+51 error 404 Note that you can also install from a
+51 error 404 tarball, folder, or http url, or git url.
+52 error System Darwin 13.3.0
+53 error command "node" "/usr/local/bin/npm" "install" "connect-multiparty" "–save"
+54 error cwd /Users/sang/workspace/github/nodejs-tutorial/doc/demo/day1/http
+55 error node -v v0.10.31
+56 error npm -v 1.4.23
+57 error code E404
+58 verbose exit [ 1, true ]

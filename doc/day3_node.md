@@ -177,3 +177,9 @@ node index.js
 ## 参考
 
 - [node-books](http://thepana.com/node-books/)
+- [node.js中文社区](http://cnodejs.org/)
+- [Node.js入门教程(E文)](http://nodebeginner.org/)
+- [中文用户手册](http://cnodejs.org/cman/)
+- [node.js API文档]( http://cnodejs.org/api/)
+- [npm依赖管理工具(node 中的RubyGems)](  http://npmjs.org/)
+- [Node Cloud(全面的node.js资料库)](http://www.nodecloud.org/)
