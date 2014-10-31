@@ -3,6 +3,39 @@
 http://nodejs.org/
 
 
+## 安装
+
+下载地址： http://nodejs.org/download/
+
+如果懒就使用installer方式，如果想自定义安装就下载source，自己编译。（推荐后者）
+
+
+如果还搞不定，请参阅 http://www.bearfruit.org/2013/06/19/how-to-install-node-js-successfully/
+
+## 工具
+
+### nvm
+
+Node Version Manager - Simple bash script to manage multiple active node.js versions
+
+用法见 https://github.com/creationix/nvm/
+
+### nrm
+
+NPM registry manager, fast switch between different registries: npm, cnpm, eu, au, sl, nj, pt
+
+在国内，建议使用taobao或cnpm的源
+
+	nrm use taobao | cnpm  
+
+## 教程
+
+官方推荐：http://nodeschool.io/
+
+非常棒
+
+....需要详细说说.....
+
 
 ## 熟悉Common JS写法
 
