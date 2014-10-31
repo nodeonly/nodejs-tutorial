@@ -166,6 +166,10 @@ fsReadFile_deferd(file).then(function(result){
 node index.js
 ```
 
+other
+
+- https://github.com/caolan/async
+- https://github.com/JacksonTian/eventproxy
 
 ## 常用库
 
