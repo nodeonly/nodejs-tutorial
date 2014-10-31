@@ -172,3 +172,7 @@ node index.js
 - utils
 
 ## 总结
+
+## 参考
+
+- [node-books](http://thepana.com/node-books/)
