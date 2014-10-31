@@ -24,6 +24,8 @@ Node Version Manager - Simple bash script to manage multiple active node.js vers
 
 NPM registry manager, fast switch between different registries: npm, cnpm, eu, au, sl, nj, pt
 
+用法见 https://github.com/Pana/nrm
+
 在国内，建议使用taobao或cnpm的源
 
 	nrm use taobao | cnpm  
