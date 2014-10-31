@@ -64,7 +64,7 @@ IMPORTANT: Multer will not process any form which is not multipart/form-data
 
 
 
-## node express 
+## node express upgrade
 
 As part of the 3.x -> 4.x changes, the middleware for processing multipart/form-data request body data was removed from the bodyParser middleware, so it only parses application/x-www-form-urlencoded and application/json request body data.
 
