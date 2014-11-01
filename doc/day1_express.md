@@ -48,6 +48,7 @@ http.createServer(function(request,response){
 这就是最简单的实现
 
 ## Node connect 版本的http server
+
 Connect is an extensible HTTP server framework for node using "plugins" known as middleware.
 
 ```
@@ -233,6 +234,7 @@ app.post('/someur',function(req,res){
     res.send('hello,world');
 });
 ```
+
 ### session
 
 一个session就是一系列某用户和服务器间的通讯。服务器有能力分辨出不同的用户。
@@ -518,6 +520,32 @@ module.exports = router;
 
 ### 如何实现文件上传
 
+什么是多部请求？
+
+	var app = express();
+	var multer  = require('multer')
+
+	app.use(multer({ 
+		dest: './uploads/',
+	  rename: function (fieldname, filename) {
+	    return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
+	  }
+	}))
+	
+在路由里
+
+	router.post('/post/formdata', function(req, res) {
+	  // res.send('respond with a resource');
+		console.log(req.body, req.files);
+		console.log(req.files.pic.path);
+		res.json(req.body);
+	});
+
+这里的req.files就可以渠道对应的files的详情，该放到db或者云存储就大胆的存储
+
+### 更多http相关的
+
+请查看[http](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/demo/day1/http/readme.md)
 
 ### request里如何取值
 
