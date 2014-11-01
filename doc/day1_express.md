@@ -692,6 +692,8 @@ npm install --save-dev zombie
 ```
 
 
+see [node 测试](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day5_test.md)
+
 ## 阅读文档
 
 ### getting start
