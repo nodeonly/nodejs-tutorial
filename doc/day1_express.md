@@ -694,6 +694,23 @@ npm install --save-dev zombie
 
 see [node 测试](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day5_test.md)
 
+## 调试
+
+### node debug
+
+### node-inspector
+
+	node-debug app.js  
+	
+然后会在浏览器里打开一个页面
+
+![](./images/debug.png)
+
+- 增加断点，查看调用栈，变量等
+- 使用console打印查看日志
+
+使用方法和chrome的inspect element调试web开发是一样的。
+
 ## 部署实战
 
 ### 开发环境下

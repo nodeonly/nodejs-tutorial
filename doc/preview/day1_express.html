@@ -774,6 +774,43 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 <span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">supertest</span>
 <span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">zombie</span>
 </pre></div>
+<p>see <a href="https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day5_test.md">node 测试</a></p>
+
+<h2>调试</h2>
+
+<h3>node debug</h3>
+
+<h3>node-inspector</h3>
+<div class="highlight"><pre><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span><span class="w">  </span>
+</pre></div>
+<p>然后会在浏览器里打开一个页面</p>
+
+<p><img src="./images/debug.png" alt=""></p>
+
+<ul>
+<li>增加断点，查看调用栈，变量等</li>
+<li>使用console打印查看日志</li>
+</ul>
+
+<p>使用方法和chrome的inspect element调试web开发是一样的。</p>
+
+<h2>部署实战</h2>
+
+<h3>开发环境下</h3>
+
+<p>在开发环境使用 nodemon，supervisor </p>
+
+<h3>产品环境下</h3>
+
+<p>在生产环境使用pm2，forever</p>
+
+<h3>集群与负载</h3>
+
+<ul>
+<li>nginx</li>
+<li>haproxy</li>
+</ul>
+
 <h2>阅读文档</h2>
 
 <h3>getting start</h3>
