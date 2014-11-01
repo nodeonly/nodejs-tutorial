@@ -195,6 +195,28 @@ http://docs.mongodb.org/manual/core/crud-introduction/
 http://mongoosejs.com/docs/
 
 http://www.tuicool.com/articles/ZVbYra
+
+### 文档
+
+Find the API docs [here](http://mongoosejs.com/docs/api.html), generated using [dox](http://github.com/visionmedia/dox).
+
+cd到node_modules/mongoose里
+
+```
+npm install
+node static.js
+```
+
+这样就可以再本地看mongoose的api了
+
+### 例子
+
+每个例子都不错，必须熟悉
+
+![](./images/mongoose.png)
+
+node modules的好处是可以随时看到代码，是不是很爽啊？
+
 ## 高级
 
 - gridfs
