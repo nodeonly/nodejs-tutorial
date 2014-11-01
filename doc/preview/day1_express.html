@@ -160,11 +160,15 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 
 <p>TODO: 此处该补出一张express在node中得位置图片</p>
 
+<p><img src="./images/expressimg9.jpg" alt="Mou icon"></p>
+
 <h2>Node 基础</h2>
 
 <p>see <a href="https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day3_node.md">node 基础</a></p>
 
-<h2>Node 版本的http server</h2>
+<h2>Write a http server</h2>
+
+<h3>use Nodejs</h3>
 <div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;http&#39;);</span>
 
 <span class="vg">http</span><span class="o">.</span><span class="vg">createServer</span><span class="p">(</span><span class="vg">function</span><span class="p">(</span><span class="vg">request</span><span class="p">,</span><span class="vg">response</span><span class="p">){</span>
@@ -174,7 +178,7 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 </pre></div>
 <p>这就是最简单的实现</p>
 
-<h2>Node connect 版本的http server</h2>
+<h3>use Node connect</h3>
 
 <p>Connect is an extensible HTTP server framework for node using &quot;plugins&quot; known as middleware.</p>
 <div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">connect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;connect&#39;)</span>
@@ -333,8 +337,17 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 
 <span class="w">    </span><span class="vg">app</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">5000</span><span class="p">);</span>
 </pre></div>
-<p>说明一下</p>
-
+<p>说明一下
+例如定义两个路由，一个对应get请求，一个对应post请求；当客户端向http://localhost:5000/发送get请求的时候，则会触发:</p>
+<div class="highlight"><pre><span class="vg">app</span><span class="o">.</span><span class="vg">get</span><span class="p">(</span><span class="c1">&#39;/&#39;,function(req,res){</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;hello,world&#39;);</span>
+<span class="p">});</span>
+</pre></div>
+<p>当客户端向http://localhost:5000/someur发送post请求的时候，则会触发:</p>
+<div class="highlight"><pre><span class="vg">app</span><span class="o">.</span><span class="vg">post</span><span class="p">(</span><span class="c1">&#39;/someur&#39;,function(req,res){</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;hello,world&#39;);</span>
+<span class="p">});</span>
+</pre></div>
 <h3>session</h3>
 
 <p>一个session就是一系列某用户和服务器间的通讯。服务器有能力分辨出不同的用户。</p>
@@ -376,15 +389,41 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 <li>用户结算的时候，从session获取物品价格和数量，计算出总价，订单完成后，清理session</li>
 </ul>
 
-<h3>理解模板jade</h3>
+<h3>理解模板</h3>
+
+<ul>
+<li>常用模板有jade，ejs，handlebars以及artTemplate等</li>
+<li>在express里如何用生成器指定模板</li>
+<li>morgan说明</li>
+</ul>
+
+<h4>jade node模板引擎</h4>
 
 <ul>
 <li>http://jade-lang.com/</li>
 </ul>
 
-<p>还有handlebars</p>
+<p>此引擎构建在node之上，需要经过node编译成html代码，例如:</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">express</span><span class="p">();</span>
 
-<p>以及如何用生成器指定模板</p>
+<span class="vg">app</span><span class="o">.</span><span class="vg">set</span><span class="p">(</span><span class="c1">&#39;views&#39;, path.join(__dirname, &#39;views&#39;));</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">set</span><span class="p">(</span><span class="c1">&#39;view engine&#39;, &#39;jade&#39;);</span>
+</pre></div>
+<p>开启express服务，指定模板路径为views，模板引擎为jade，当客户端访问指定路由时，express便会去给对应的jade文件配置参数，并编译此jade模板:</p>
+<div class="highlight"><pre><span class="vg">router</span><span class="o">.</span><span class="vg">get</span><span class="p">(</span><span class="c1">&#39;/&#39;, function(req, res) {</span>
+<span class="w">  </span><span class="vg">res</span><span class="o">.</span><span class="vg">render</span><span class="p">(</span><span class="c1">&#39;index&#39;, { title: &#39;Express&#39; });</span>
+<span class="p">});</span>
+</pre></div>
+<p>index jade模板:</p>
+<div class="highlight"><pre><span class="vg">extends</span><span class="w"> </span><span class="vg">layout</span>
+
+<span class="vg">block</span><span class="w"> </span><span class="vg">content</span>
+<span class="w">  </span><span class="vg">h1</span><span class="o">=</span><span class="w"> </span><span class="vg">title</span>
+<span class="w">  </span><span class="vg">p</span><span class="w"> </span><span class="vg">Welcome</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="err">#</span><span class="p">{</span><span class="vg">title</span><span class="p">}</span>
+</pre></div>
+<p>最终在客户端输出:</p>
+
+<p><img src="./images/expressimg3.jpg" alt="Mou icon"></p>
 
 <h3>理解public目录</h3>
 
@@ -397,9 +436,7 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 </pre></div>
 <p>它就是用来托管public中得所有文件。可以以http方式访问</p>
 
-<p>说明</p>
-
-<p>####如果public/index.html不存在</p>
+<h4>如果public/index.html不存在</h4>
 
 <p>此时如何使用其他页面做为入口，需要再<code>/</code>路由定义处，redirect到对应页面(by kezhi)。</p>
 
@@ -413,14 +450,15 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 
 <p>区分express.static和http-server的差别：功能一样，用法上有差异</p>
 
-<p>http-server只做静态托管文件，输出请求文件，无法拦截到请求参数;
-express.static不仅可以托管静态文件，并且提供接口可以拦截到前端页面的请求参数，并且可以控制返回数据;（这句是错的）</p>
-
 <h4>路由冲突</h4>
 
 <p>当<code>public/index.html</code>和路由的<code>/</code>冲突</p>
 
 <p>此时按照<code>public/index.html</code>走</p>
+
+<h3>HTTP</h3>
+
+<p>请查看<a href="https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/demo/day1/http/readme.md">HTTP</a></p>
 
 <h2>任务</h2>
 
@@ -441,7 +479,7 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 
 <h3>准备工作</h3>
 
-<p>安装supervisor</p>
+<p>安装supervisor(by kezhi)</p>
 
 <h3>路由定制方式</h3>
 
@@ -503,7 +541,7 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 <h3>如何处理get请求</h3>
 
 <p>我们可以在一个html文件里向端口发送get请求，首先要在访问http://localhost:3000下，端口能向浏览器输出此html，默认情况下，express是会输出pubblic文件夹下的index.html文件，在没有特别指明的情况下，所以注释掉:</p>
-<div class="highlight"><pre><span class="c1">//app.use(&#39;/&#39;, routes);</span>
+<div class="highlight"><pre><span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="c1">&#39;/&#39;, routes);</span>
 </pre></div>
 <p>这样在get请求的url为&#39;/&#39;时，express会找到pubblic文件夹;我们可以自定义路由:</p>
 <div class="highlight"><pre><span class="c1">//自定义路由</span>
@@ -516,19 +554,7 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 
 <span class="o">/*</span> <span class="k">GET</span> <span class="n">http</span><span class="p">.</span><span class="o">*/</span>
 <span class="n">router</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="c">&#39;/&#39;, function(req, res) {</span>
-    <span class="n">var</span> <span class="n">sUrl</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">url</span><span class="err">;</span>
-    <span class="n">var</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">sUrl</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="c">&#39;?&#39;);</span>
-    <span class="n">var</span> <span class="n">arrReq</span> <span class="o">=</span> <span class="n">arr</span><span class="err">[</span><span class="mi">1</span><span class="err">]</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="c">&#39;&amp;&#39;);</span>
-    <span class="n">var</span> <span class="n">resJson</span> <span class="o">=</span> <span class="p">{}</span><span class="err">;</span>
-
-    <span class="k">for</span><span class="p">(</span><span class="n">var</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="err">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arrReq</span><span class="p">.</span><span class="n">length</span><span class="err">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
-        <span class="o">//</span><span class="err">[</span><span class="c">&#39;xx=xx&#39;,&#39;xx=xx&#39;]</span>
-        <span class="n">var</span> <span class="n">newarr</span> <span class="o">=</span> <span class="n">arrReq</span><span class="err">[</span><span class="n">i</span><span class="err">]</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="c">&#39;=&#39;);</span>
-        <span class="n">var</span> <span class="n">attr</span> <span class="o">=</span> <span class="n">newarr</span><span class="err">[</span><span class="mi">0</span><span class="err">];</span>
-        <span class="n">var</span> <span class="n">value</span> <span class="o">=</span> <span class="n">newarr</span><span class="err">[</span><span class="mi">1</span><span class="err">];</span>
-        <span class="n">resJson</span><span class="err">[</span><span class="n">attr</span><span class="err">]</span> <span class="o">=</span> <span class="n">value</span><span class="err">;</span>
-    <span class="p">}</span><span class="err">;</span>
-    <span class="n">res</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">resJson</span><span class="p">)</span><span class="err">;</span>
+    <span class="n">res</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">query</span><span class="p">)</span><span class="err">;</span>
 <span class="p">})</span><span class="err">;</span>
 
 <span class="n">module</span><span class="p">.</span><span class="n">exports</span> <span class="o">=</span> <span class="n">router</span><span class="err">;</span>
@@ -598,6 +624,27 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 </pre></div>
 <h3>如何实现文件上传</h3>
 
+<p>什么是多部请求？</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">express</span><span class="p">();</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">multer</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;multer&#39;)</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">multer</span><span class="p">({</span><span class="w"> </span>
+<span class="w">    </span><span class="nl">dest:</span><span class="w"> </span><span class="c1">&#39;./uploads/&#39;,</span>
+<span class="w">  </span><span class="nl">rename:</span><span class="w"> </span><span class="vg">function</span><span class="w"> </span><span class="p">(</span><span class="vg">fieldname</span><span class="p">,</span><span class="w"> </span><span class="vg">filename</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="vg">return</span><span class="w"> </span><span class="vg">filename</span><span class="o">.</span><span class="vg">replace</span><span class="p">(</span><span class="o">/\</span><span class="vg">W</span><span class="o">+/</span><span class="vg">g</span><span class="p">,</span><span class="w"> </span><span class="c1">&#39;-&#39;).toLowerCase() + Date.now()</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}))</span>
+</pre></div>
+<p>在路由里</p>
+<div class="highlight"><pre><span class="vg">router</span><span class="o">.</span><span class="vg">post</span><span class="p">(</span><span class="c1">&#39;/post/formdata&#39;, function(req, res) {</span>
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;respond with a resource&#39;);</span>
+<span class="w">    </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">req</span><span class="o">.</span><span class="vg">body</span><span class="p">,</span><span class="w"> </span><span class="vg">req</span><span class="o">.</span><span class="vg">files</span><span class="p">);</span>
+<span class="w">    </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">req</span><span class="o">.</span><span class="vg">files</span><span class="o">.</span><span class="vg">pic</span><span class="o">.</span><span class="vg">path</span><span class="p">);</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">json</span><span class="p">(</span><span class="vg">req</span><span class="o">.</span><span class="vg">body</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+<p>这里的req.files就可以渠道对应的files的详情，该放到db或者云存储就大胆的存储</p>
+
 <h3>request里如何取值</h3>
 
 <ul>
@@ -636,12 +683,88 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
 
 <p>试着说明package.json的众多方面</p>
 
+<h4>package.json</h4>
+
+<p>package.json是描述项目文件，描述项目所依赖的模块，当我们把一个项目发布到npm时，其实不用把我们所依赖的模块一起发不上去，只需要把依赖的模块名称填写到package.json里面，当别人npm install的时候，npm会去识别package.json中所依赖的模块名称，然后下载下来:</p>
+
 <ul>
 <li><code>npm install --save</code>  vs <code>npm install --save-dev</code></li>
 <li><code>npm start</code> vs <code>npm test</code> (scripts自定义)</li>
 <li>如何写一个npm，以及发布</li>
 </ul>
 
+<p>当我们通过npm安装某一模块时，运用<code>npm install --save</code>或者<code>npm install --save-dev</code>，npm则会把我们的项目依赖信息写入package.json中。</p>
+
+<p><code>npm install --save</code>  和 <code>npm install --save-dev</code>的区别:</p>
+
+<p>devDependencies下列出的模块，是我们开发时用的，比如grunt-contrib-uglify，我们用它混淆js文件，它们不会被部署到生产环境。dependencies下的模块，则是我们生产环境中需要的依赖。</p>
+
+<h4>npm install --save  和 npm install --save-dev的区别:</h4>
+
+<p>devDependencies下列出的模块，是我们开发时用的，比如grunt-contrib-uglify，我们用它混淆js文件，它们不会被部署到生产环境。dependencies下的模块，则是我们生产环境中需要的依赖。</p>
+
+<h4>npm start</h4>
+
+<p>新建项目npmStart:</p>
+
+<p><img src="./images/npmstart.png" alt="Mou icon"></p>
+
+<p>配置package.json中得script参数:</p>
+<div class="highlight"><pre><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;example1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;private&quot;</span><span class="o">:</span><span class="w"> </span><span class="vg">true</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;scripts&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;start&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;node http.js&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>cd到此目录，运行:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">npm</span><span class="w"> </span><span class="vg">start</span>
+</pre></div>
+<p>即可运行http.js文件，这就相当于是node http.js的快捷运行方式。</p>
+
+<h4>npm发布模块</h4>
+
+<p>如果需要向npm发布自己的模块，那么需要注册账号密码，终端运行:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">npm</span><span class="w"> </span><span class="vg">adduser</span>
+</pre></div>
+<p>按照提示填写账号密码邮箱，新建项目，配置package.json文件:</p>
+<div class="highlight"><pre><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;hellonpm&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;hello world test app&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0.0.1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;private&quot;</span><span class="o">:</span><span class="w"> </span><span class="vg">false</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;dependencies&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;express&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2.5.9&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;ejs&quot;</span><span class="o">:</span><span class="s2">&quot;0.4.2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;superagent&quot;</span><span class="o">:</span><span class="s2">&quot;0.3.0&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>name即为我们的模块名称，要注意的是private必须设置为false，模块才能被发布，dependencies是指我们的模块需要依赖哪些其他的模块,cd到express文件夹下:</p>
+
+<p><img src="./images/npm.jpg" alt="Mou icon"></p>
+
+<p>终端运行:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">npm</span><span class="w"> </span><span class="vg">publish</span>
+</pre></div>
+<p><img src="./images/npm2.jpg" alt="Mou icon"></p>
+
+<p>模块发布成功！</p>
+
+<p>cd到任意文件夹运行:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="vg">hellonpm</span>
+</pre></div>
+<p>即可安装我们上传的hellonpm模块！</p>
+
+<h2>测试</h2>
+<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">mocha</span>
+<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">chai</span>
+<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">sinon</span>
+<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">supertest</span>
+<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">zombie</span>
+</pre></div>
 <h2>阅读文档</h2>
 
 <h3>getting start</h3>
@@ -707,10 +830,10 @@ express.static不仅可以托管静态文件，并且提供接口可以拦截到
   <span class="nl">secret:</span> <span class="p">&#39;</span><span class="n">keyboard</span> <span class="n">cat</span><span class="p">&#39;</span>
 <span class="p">}))</span>
 </pre></div></li>
-<li><p>dsdsds</p>
-
-<h2>总结</h2></li>
+<li><p>dsdsds</p></li>
 </ul>
+
+<h2>总结</h2>
 
 			          	</article>
 			        </div>

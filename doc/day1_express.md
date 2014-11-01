@@ -34,7 +34,8 @@ TODO: 此处该补出一张express在node中得位置图片
 
 see [node 基础](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day3_node.md)
 
-## Node 版本的http server
+## Write a http server
+### use Nodejs
 
 ```
 var http = require('http');
@@ -47,7 +48,7 @@ http.createServer(function(request,response){
 
 这就是最简单的实现
 
-## Node connect 版本的http server
+### use Node connect
 
 Connect is an extensible HTTP server framework for node using "plugins" known as middleware.
 
@@ -271,14 +272,15 @@ https://github.com/expressjs/session
 - 用户在购物页面操作，点击加入购物车，此时在session里增加一条信息，存储当前物品信息
 - 用户结算的时候，从session获取物品价格和数量，计算出总价，订单完成后，清理session
 
-### 理解模板jade
+### 理解模板
+
+- 常用模板有jade，ejs，handlebars以及artTemplate等
+- 在express里如何用生成器指定模板
+- morgan说明
+
+#### jade node模板引擎
+
 - http://jade-lang.com/
-
-还有handlebars
-
-以及如何用生成器指定模板
-
-####jade node模板引擎
 
 此引擎构建在node之上，需要经过node编译成html代码，例如:
 
@@ -320,9 +322,7 @@ app.js里
 	
 它就是用来托管public中得所有文件。可以以http方式访问
 
-说明
-
-####如果public/index.html不存在
+#### 如果public/index.html不存在
 
 此时如何使用其他页面做为入口，需要再`/`路由定义处，redirect到对应页面(by kezhi)。
 
@@ -342,6 +342,10 @@ app.js里
 当`public/index.html`和路由的`/`冲突
 
 此时按照`public/index.html`走
+
+### HTTP
+
+请查看[HTTP](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/demo/day1/http/readme.md)
 
 
 ## 任务
@@ -543,9 +547,6 @@ module.exports = router;
 
 这里的req.files就可以渠道对应的files的详情，该放到db或者云存储就大胆的存储
 
-### 更多http相关的
-
-请查看[http](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/demo/day1/http/readme.md)
 
 ### request里如何取值
 
@@ -600,7 +601,14 @@ package.json是描述项目文件，描述项目所依赖的模块，当我们�
 
 devDependencies下列出的模块，是我们开发时用的，比如grunt-contrib-uglify，我们用它混淆js文件，它们不会被部署到生产环境。dependencies下的模块，则是我们生产环境中需要的依赖。
  
-#### npm install --save  和 npm install --save-dev的区别:
+#### npm参数说明
+
+npm install --save  和 npm install --save-dev的区别:
+
+说明
+
+- save会自动保存到package.json里
+- save-dev会保存到devDependencies模块下，save会保存到dependencies
 
 devDependencies下列出的模块，是我们开发时用的，比如grunt-contrib-uglify，我们用它混淆js文件，它们不会被部署到生产环境。dependencies下的模块，则是我们生产环境中需要的依赖。
 
