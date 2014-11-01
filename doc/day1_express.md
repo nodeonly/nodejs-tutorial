@@ -785,6 +785,38 @@ node-inspector是通过websocket方式来转向debug输入输出的。因此，�
 
 - nginx
 - haproxy
+## 压力测试
+### ab
+
+ab是apache自带的一个很好用的压力测试工具，当安装完apache的时候，就可以在bin下面找到ab
+
+	ab -n1000 -c100 http://127.0.0.1:4100
+
+### wrk
+
+安装
+
+```
+git clone https://github.com/wg/wrk
+cd wrk
+make
+sudo cp -rf wrk /bin/
+```
+
+测试
+
+```
+wrk -t8 -c400  http://127.0.0.1:4100
+Running 10s test @ http://127.0.0.1:4100
+  8 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    99.83ms   16.70ms 175.72ms   76.86%
+    Req/Sec   325.50    161.75   665.00     50.27%
+  22709 requests in 10.01s, 5.65MB read
+  Socket errors: connect 155, read 3461, write 0, timeout 775
+Requests/sec:   2267.99
+Transfer/sec:    578.07KB
+```
 
 ## 阅读文档
 
