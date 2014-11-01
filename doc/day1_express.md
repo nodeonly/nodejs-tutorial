@@ -696,6 +696,18 @@ see [node 测试](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/da
 
 ## 部署实战
 
+### 开发环境下
+
+在开发环境使用 nodemon，supervisor 
+
+### 产品环境下
+
+在生产环境使用pm2，forever
+
+### 集群与负载
+
+- nginx
+- haproxy
 
 ## 阅读文档
 
