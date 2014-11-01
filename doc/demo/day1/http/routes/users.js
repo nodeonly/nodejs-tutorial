@@ -18,5 +18,10 @@ router.post('/post/formdata', function(req, res) {
 	res.json(req.body);
 });
 
+router.post('/post/raw', function(req, res) {
+  // res.send('respond with a resource');
+	res.json(req.text);
+});
+
 
 module.exports = router;

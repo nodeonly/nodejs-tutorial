@@ -11,6 +11,18 @@ var users = require('./routes/users');
 var app = express();
 var multer  = require('multer')
 
+// for raw data
+app.use(function(req, res, next){
+  if (req.is('text/*')) {
+    req.text = '';
+    req.setEncoding('utf8');
+    req.on('data', function(chunk){ req.text += chunk });
+    req.on('end', next);
+  } else {
+    next();
+  }
+});
+
 app.use(multer({ 
 	dest: './uploads/',
   rename: function (fieldname, filename) {
