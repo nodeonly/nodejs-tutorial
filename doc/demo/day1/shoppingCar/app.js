@@ -11,7 +11,6 @@ var users = require('./routes/users');
 
 var register = require('./routes/register');
 var login = require('./routes/login');
-
 var app = express();
 
 // view engine setup
@@ -23,14 +22,10 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser('xiaolong'));
+app.use(cookieParser(''));
 app.use(session({ 
-    cookie:{
-        path: '/', 
-        httpOnly: true, 
-        secure: true, 
-        maxAge: 5
-    }
+    secret: 'xiaolong', 
+    cookie: { maxAge: 10000 }
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
