@@ -780,10 +780,56 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 
 <h3>node debug</h3>
 
-<h3>node-inspector</h3>
-<div class="highlight"><pre><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span><span class="w">  </span>
+<p>V8 提供了一个强大的调试器，可以通过 TCP 协议从外部访问。Nodejs提供了一个内建调试器来帮助开发者调试应用程序。想要开启调试器我们需要在代码中加入debugger标签，当Nodejs执行到debugger标签时会自动暂停（debugger标签相当于在代码中开启一个断点）。代码如下：</p>
+
+<p>see <code>demo/day1/debug/app_debug1.js</code></p>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">express</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="c">&#39;express&#39;);</span>
+<span class="n">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">express</span><span class="p">()</span><span class="err">;</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="c">&#39;/&#39;,function(req,res){</span>
+    <span class="n">debugger</span><span class="err">;</span>   
+  <span class="n">res</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="c">&#39;hello,world&#39;);</span>
+<span class="p">})</span><span class="err">;</span>
+
+
+<span class="n">app</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5005</span><span class="p">)</span><span class="err">;</span>
+
+<span class="n">module</span><span class="p">.</span><span class="n">exports</span> <span class="o">=</span> <span class="n">app</span><span class="err">;</span>
 </pre></div>
-<p>然后会在浏览器里打开一个页面</p>
+<p>执行命令：<code>node debug app_debug1.js</code> 就可以进入调试模式。</p>
+
+<p>当然，首先需要在程序代码中手动添加中断debugger; ， 这样当以调试模式运行时，程序会自动中断，然后等候你调试，就像GDB一样，可以用help命令查看自己都可以使用哪些调试命令。</p>
+<div class="highlight"><pre><span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">help</span>
+<span class="nl">Commands:</span><span class="w"> </span><span class="vg">run</span><span class="w"> </span><span class="p">(</span><span class="vg">r</span><span class="p">),</span><span class="w"> </span><span class="vg">cont</span><span class="w"> </span><span class="p">(</span><span class="vg">c</span><span class="p">),</span><span class="w"> </span><span class="vg">next</span><span class="w"> </span><span class="p">(</span><span class="vg">n</span><span class="p">),</span><span class="w"> </span><span class="vg">step</span><span class="w"> </span><span class="p">(</span><span class="vg">s</span><span class="p">),</span><span class="w"> </span><span class="vg">out</span><span class="w"> </span><span class="p">(</span><span class="vg">o</span><span class="p">),</span><span class="w"> </span><span class="vg">backtrace</span><span class="w"> </span><span class="p">(</span><span class="vg">bt</span><span class="p">),</span><span class="w"> </span><span class="vg">setBreakpoint</span><span class="w"> </span><span class="p">(</span><span class="vg">sb</span><span class="p">),</span><span class="w"> </span><span class="vg">clearBreakpoint</span><span class="w"> </span><span class="p">(</span><span class="vg">cb</span><span class="p">),</span>
+<span class="vg">watch</span><span class="p">,</span><span class="w"> </span><span class="vg">unwatch</span><span class="p">,</span><span class="w"> </span><span class="vg">watchers</span><span class="p">,</span><span class="w"> </span><span class="vg">repl</span><span class="p">,</span><span class="w"> </span><span class="vg">restart</span><span class="p">,</span><span class="w"> </span><span class="vg">kill</span><span class="p">,</span><span class="w"> </span><span class="vg">list</span><span class="p">,</span><span class="w"> </span><span class="vg">scripts</span><span class="p">,</span><span class="w"> </span><span class="vg">breakOnException</span><span class="p">,</span><span class="w"> </span><span class="vg">breakpoints</span><span class="p">,</span><span class="w"> </span><span class="vg">version</span>
+</pre></div>
+<p>这里就和gdb等调试器一模一样了</p>
+
+<p>注意,如果出现</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="w"> </span><span class="vg">Failed</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">open</span><span class="w"> </span><span class="vg">socket</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">port</span><span class="w"> </span><span class="il">5858</span><span class="p">,</span><span class="w"> </span><span class="vg">waiting</span><span class="w"> </span><span class="il">1000</span><span class="w"> </span><span class="vg">ms</span><span class="w"> </span><span class="vg">before</span><span class="w"> </span><span class="vg">retrying</span>
+</pre></div>
+<p>请结束掉所有debug进程</p>
+<div class="highlight"><pre><span class="vg">ps</span><span class="w"> </span><span class="o">-</span><span class="vg">ef</span><span class="o">|</span><span class="vg">grep</span><span class="w"> </span><span class="vg">debug</span><span class="o">-</span><span class="vg">brk</span><span class="o">|</span><span class="vg">awk</span><span class="w"> </span><span class="c1">&#39;{print $2}&#39;|xargs kill -9</span>
+</pre></div>
+<h3>node-inspector</h3>
+
+<p>上面这种方式稍微有些麻烦，我们写JS代码调试的时候一般都用FireBug或谷歌浏览器内置的调试工具，nodejs程序当然也可以这样子来调试，但是首先需要安装一个node-inspector的东西</p>
+
+<p>node-inspector是通过websocket方式来转向debug输入输出的。因此，我们在调试前要先启动node-inspector来监听Nodejs的debug调试端口。</p>
+
+<p>这个需要用npm来安装，只需要执行下列语句：</p>
+<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">node</span><span class="o">-</span><span class="vg">inspector</span>
+</pre></div>
+<p>安装完成之后，通常可以直接这样启动在后台：</p>
+<div class="highlight"><pre><span class="vg">node</span><span class="o">-</span><span class="vg">inspector</span><span class="w"> </span><span class="o">&amp;</span>
+</pre></div>
+<p>默认会监听8080端口，当然，也可能通过使用--web-port参数来修改。然后，在执行node程序的时候，多加个参数：--debug-brk, 如下：</p>
+<div class="highlight"><pre><span class="vg">node</span><span class="w"> </span><span class="o">--</span><span class="vg">debug</span><span class="o">-</span><span class="vg">brk</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span>
+</pre></div>
+<p>或者</p>
+<div class="highlight"><pre><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span>
+</pre></div>
+<p>控制台会返回“debugger listening on port 5858”， 现在打开浏览嚣，访问http://localhost:8080，这时候就会打开一个很像Chrome内置调试工具的界面，并且代码断点在第一行，下面就可以使用这个来调试了。</p>
 
 <p><img src="./images/debug.png" alt=""></p>
 
@@ -793,6 +839,8 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 </ul>
 
 <p>使用方法和chrome的inspect element调试web开发是一样的。</p>
+
+<p>调试还是很方便的，而且可以异地调试。</p>
 
 <h2>部署实战</h2>
 
@@ -811,6 +859,33 @@ HTTP是一个应用层协议，由请求和响应构成，是一个标准的客�
 <li>haproxy</li>
 </ul>
 
+<h2>压力测试</h2>
+
+<h3>ab</h3>
+
+<p>ab是apache自带的一个很好用的压力测试工具，当安装完apache的时候，就可以在bin下面找到ab</p>
+<div class="highlight"><pre><span class="vg">ab</span><span class="w"> </span><span class="o">-</span><span class="vg">n1000</span><span class="w"> </span><span class="o">-</span><span class="vg">c100</span><span class="w"> </span><span class="nl">http:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="il">4100</span>
+</pre></div>
+<h3>wrk</h3>
+
+<p>安装</p>
+<div class="highlight"><pre><span class="vg">git</span><span class="w"> </span><span class="vg">clone</span><span class="w"> </span><span class="nl">https:</span><span class="o">//</span><span class="vg">github</span><span class="o">.</span><span class="vg">com</span><span class="o">/</span><span class="vg">wg</span><span class="o">/</span><span class="vg">wrk</span>
+<span class="vg">cd</span><span class="w"> </span><span class="vg">wrk</span>
+<span class="vg">make</span>
+<span class="vg">sudo</span><span class="w"> </span><span class="vg">cp</span><span class="w"> </span><span class="o">-</span><span class="vg">rf</span><span class="w"> </span><span class="vg">wrk</span><span class="w"> </span><span class="o">/</span><span class="vg">bin</span><span class="o">/</span>
+</pre></div>
+<p>测试</p>
+<div class="highlight"><pre><span class="vg">wrk</span><span class="w"> </span><span class="o">-</span><span class="vg">t8</span><span class="w"> </span><span class="o">-</span><span class="vg">c400</span><span class="w">  </span><span class="nl">http:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="il">4100</span>
+<span class="vg">Running</span><span class="w"> </span><span class="il">10</span><span class="vg">s</span><span class="w"> </span><span class="vg">test</span><span class="w"> </span><span class="err">@</span><span class="w"> </span><span class="nl">http:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="il">4100</span>
+<span class="w">  </span><span class="il">8</span><span class="w"> </span><span class="vg">threads</span><span class="w"> </span><span class="vg">and</span><span class="w"> </span><span class="il">400</span><span class="w"> </span><span class="vg">connections</span>
+<span class="w">  </span><span class="vg">Thread</span><span class="w"> </span><span class="vg">Stats</span><span class="w">   </span><span class="vg">Avg</span><span class="w">      </span><span class="vg">Stdev</span><span class="w">     </span><span class="vg">Max</span><span class="w">   </span><span class="o">+/-</span><span class="w"> </span><span class="vg">Stdev</span>
+<span class="w">    </span><span class="vg">Latency</span><span class="w">    </span><span class="mf">99.83</span><span class="vg">ms</span><span class="w">   </span><span class="mf">16.70</span><span class="vg">ms</span><span class="w"> </span><span class="mf">175.72</span><span class="vg">ms</span><span class="w">   </span><span class="mf">76.86</span><span class="o">%</span>
+<span class="w">    </span><span class="vg">Req</span><span class="o">/</span><span class="vg">Sec</span><span class="w">   </span><span class="mf">325.50</span><span class="w">    </span><span class="mf">161.75</span><span class="w">   </span><span class="mf">665.00</span><span class="w">     </span><span class="mf">50.27</span><span class="o">%</span>
+<span class="w">  </span><span class="il">22709</span><span class="w"> </span><span class="vg">requests</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="mf">10.01</span><span class="vg">s</span><span class="p">,</span><span class="w"> </span><span class="mf">5.65</span><span class="vg">MB</span><span class="w"> </span><span class="vg">read</span>
+<span class="w">  </span><span class="vg">Socket</span><span class="w"> </span><span class="nl">errors:</span><span class="w"> </span><span class="vg">connect</span><span class="w"> </span><span class="il">155</span><span class="p">,</span><span class="w"> </span><span class="vg">read</span><span class="w"> </span><span class="il">3461</span><span class="p">,</span><span class="w"> </span><span class="vg">write</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="w"> </span><span class="vg">timeout</span><span class="w"> </span><span class="il">775</span>
+<span class="vg">Requests</span><span class="o">/</span><span class="nl">sec:</span><span class="w">   </span><span class="mf">2267.99</span>
+<span class="vg">Transfer</span><span class="o">/</span><span class="nl">sec:</span><span class="w">    </span><span class="mf">578.07</span><span class="vg">KB</span>
+</pre></div>
 <h2>阅读文档</h2>
 
 <h3>getting start</h3>

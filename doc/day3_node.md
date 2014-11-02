@@ -187,3 +187,4 @@ other
 - [node.js API文档]( http://cnodejs.org/api/)
 - [npm依赖管理工具(node 中的RubyGems)](  http://npmjs.org/)
 - [Node Cloud(全面的node.js资料库)](http://www.nodecloud.org/)
+- [node.js中文资料导航](https://github.com/youyudehexie/node123)
