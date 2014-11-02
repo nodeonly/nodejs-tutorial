@@ -1,63 +1,29 @@
 var express = require('express');
 var router = express.Router();
-<<<<<<< HEAD
-=======
-var userArr = require('./userjson.js');
+var mongoose = require('mongoose');
 
-function findJson(arr,str){
-	
-	for(var i=0; i<arr.length; i++){
-		if(arr[i].name == str){
-			return true;
-		};
-	};
-
-	return false;
-};
->>>>>>> 88bde3a1c7f02d2e44171c6bfaa2a5b86e878451
+mongoose.connect('mongodb://localhost:7000/mytest');
+var db = mongoose.connection;
+var kittySchema = mongoose.Schema({
+    name: String,
+    password:String
+});
+var Kitte = mongoose.model('user', kittySchema);
 
 /* GET home page. */
 router.post('/', function(req, res) {
-	var reqJson = req.body;
-<<<<<<< HEAD
-	req.session.name = reqJson.name; 
- 	res.send({
- 		code:0
- 	});
-=======
 
 	/*{
 		'name':'xxx',
 		'password':'xxx'
 	}*/
-
-
-	//判断是否已经注册
-	if(findJson(userArr,reqJson.name)){
-		res.send({
-	 		code:1,
-	 		msg:{
-	 			detail:'此用户已经注册'
-	 		}
-	 	});
-	 	
-	}else{
-		userArr.push({
-			'name':reqJson.name,
-			'password':reqJson.password
-		});
-		
-		res.send({
-	 		code:0,
-	 		msg:{
-	 			detail:'注册成功'
-	 		}
-	 	});
-	 	
+	var getJson = req.body;
+	if(){
 
 	};
- 	console.log(userArr);
->>>>>>> 88bde3a1c7f02d2e44171c6bfaa2a5b86e878451
+	/*var fluffy = new Kitte({ name: 'xiaolong' });
+	fluffy.save();*/
+
 });
 
 module.exports = router;
