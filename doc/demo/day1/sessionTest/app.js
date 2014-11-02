@@ -40,14 +40,10 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser('andylau'));
+app.use(cookieParser());
 app.use(session({ 
-    name:'fuck',
-    secret: 'keyboard cat', 
-    cookie: { maxAge: 600000000 },
-    genid: function(req) {
-        return genuuid(); // use UUIDs for session IDs
-    },
+    secret: 'xiaolong', 
+    cookie: { maxAge: 600000000 }
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
