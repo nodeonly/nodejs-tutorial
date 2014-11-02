@@ -1,14 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
+var user = require('../dataModel/users');
 
-mongoose.connect('mongodb://localhost:7000/mytest');
-var db = mongoose.connection;
-var kittySchema = mongoose.Schema({
-    name: String,
-    password:String
-});
-var Kitte = mongoose.model('user', kittySchema);
 
 /* GET home page. */
 router.post('/', function(req, res) {
@@ -18,9 +11,12 @@ router.post('/', function(req, res) {
 		'password':'xxx'
 	}*/
 	var getJson = req.body;
-	if(){
-
-	};
+	console.log(getJson);
+	var userData = new user({name:getJson.name,password:getJson.password});
+	userData.save();
+	/*user.find({name:'xiaolong'},function(err,json){
+		console.log('a');
+	});*/
 	/*var fluffy = new Kitte({ name: 'xiaolong' });
 	fluffy.save();*/
 
