@@ -819,6 +819,11 @@ Requests/sec:   2267.99
 Transfer/sec:    578.07KB
 ```
 
+## 性能监控
+
+利用 new relic 监控 node.js 的 express 项目
+http://snoopyxdy.blog.163.com/blog/static/6011744020147279630820
+
 ## 阅读文档
 
 ### getting start
@@ -886,7 +891,7 @@ http://www.expressjs.com.cn
 	  secret: 'keyboard cat'
 	}))
 	```
-- dsdsds
+
 
 
 
