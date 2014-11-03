@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title> 
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<link type="image/x-icon" href="favicon.ico" rel="icon">
+	<script type="text/javascript" src="javascripts/jquery.js"></script>
+	<script>
+	window.onload = function(){
+
+		function reminder(msg){
+			$('body').append('<div class="store_suc"></div>');
+			$('.store_suc').html(msg).css('display','block').stop().animate({opacity:0.5},200,function(){
+				var _this = this;
+				setTimeout(function(){
+
+					$(_this).animate({opacity:0},200,function(){
+						$(this).remove();
+					});
+				},1000);
+
+			});
+		};
+
+
+		$('.list').bind('click',function(ev){
+
+			var oEvent = ev || event;
+			var oTarget = oEvent.target;
+			var oLi = $(oTarget).closest('li');
+
+			if(oLi.hasClass('active')){
+				oLi.removeClass('active');
+				
+			}else{
+				oLi.addClass('active');
+				
+			};
+		});
+
+		function showArticalList(){
+			$.ajax({
+	             type: "POST",
+	             url: "http://localhost:3000/getArticalList",
+	             data: {
+	             	
+	             },
+	             dataType: "json",
+	             success: function(data){
+	             	$('.list').css('display','block');
+	                if(data.code == 0){
+	                	$('.list ul').html('');
+	                	for(var i=0; i<data.msg.length; i++){
+	                		var htmlarr = [
+		                			'<li _id="'+data.msg[i].articlId+'">',
+										'<div class="imgwarp"><img src="img/'+(data.msg[i].articlId+1)+'.jpg"></div>',
+										'<p class="shoppingname">'+data.msg[i].name+'</p>',
+										'<p class="money">$'+data.msg[i].price+'</p>',
+									'</li>'
+	                		];
+	                		var html = htmlarr.join('');
+	                		$('.list ul').append(html);
+	                	};
+	                }else{
+	                	reminder(data.msg);
+	                };
+	              }
+	         });
+		};
+		
+		$('#addBtn').click(function(){
+
+			if(!$('.list').length){
+				return;
+			};
+
+			if(!$('.list .active').length){
+				reminder('请先选择商品');
+				return;
+			};
+			var sendArr = [];
+			for(var i=0; i<$('.list .active').length; i++){
+				var parNum = parseInt($('.list .active').eq(i).attr('_id'));
+				sendArr.push(parNum);
+			};
+
+			$.ajax({
+	             type: "POST",
+	             url: "http://localhost:3000/storeMyCart",
+	             data: {
+	             	storeId:sendArr.join('&')
+	             },
+	             dataType: "json",
+	             success: function(data){
+	             	
+	                if(data.code == 0){
+	                	reminder('成功加入');
+	                }else{
+	                	reminder(data.msg);
+	                };
+	              }
+	         });
+		});
+
+		$('#showListBtn').click(function(){
+			showArticalList();
+		});
+		$('.usrName').text(sessionStorage.userName);
+		showArticalList();
+	};
+	</script>
+</head>
+<body>	
+	<header>ShoppingCart</header>
+	<p class="usrMsg"><span>用户名:</span><span class="usrName"></span></p>
+	<div class="btns">
+		<div class="btnbox">
+			<a id="addBtn" href="javascript:;">加入购物车</a>
+			<a id="myCartBtn" href="myCart.html">我的购物车</a>
+			<a id="showListBtn" href="javascript:;">商品列表</a>
+		</div>
+	</div>
+	<div class="list">
+		<ul>
+		</ul>
+	</div>
+</body>
+</html>

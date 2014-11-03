@@ -10,18 +10,15 @@ p{color:#ccc}
 	padding:0px;
 }
 body{
-	font-family:"Helvetica Neue","Open Sans",sans-serif;
-	font: 100 4.2em "Helvetica Neue","Open Sans",sans-serif;
+	font-family: Arial;
+	font-style:normal;
 }
-img{
-	width:300px;
-	display:block;
-}
-ul{
+
+.loginBox ul{
 	overflow:hidden;
 	margin:100px;
 }
-li{
+.loginBox li{
 	list-style:none;
 	font-size:12px;
 	padding:10px 0px;
@@ -33,7 +30,7 @@ header{
 	text-align:center;
 	margin-top:50px;
 	font-size:50px;
-	color:#690;
+	color:#ff6699;
 }
 .res{
 	height:300px;
@@ -89,7 +86,7 @@ header{
 	border-radius:5px;
 	cursor:pointer;
 	color: #fff;
-	background:#690;
+	background:#ff6699;
 	font-size:16px;
 	text-align:center;
 }
@@ -109,4 +106,96 @@ header{
 	padding:29px 26px;
 	text-align:center;
 	z-index:1000;
+}
+.usrMsg{
+	text-align:center;
+	padding-top:10px;
+	display:block;
+}
+.myCart,.list{
+	width:100%;
+	margin-top:20px;
+}
+.list ul{
+	width:888px;
+	margin:0 auto;
+	overflow:hidden;
+	padding:20px;
+}
+.myCart ul{
+	width:300px;
+	margin:0 auto;
+	overflow:hidden;
+	padding:20px;
+}
+.myCart .item{
+	width:300px;
+	height:365px;
+}
+.myCart .count{
+	display:inline-block;
+	height:350px;
+	line-height:350px;
+	font-size:60px;
+	color:#ff6699;
+}
+.myCart li,.list ul li{
+	width:180px;
+	border:1px solid #d8d8d9;
+	margin:10px;
+	float:left;
+	cursor:pointer;
+	list-style:none;
+	padding:10px 10px 20px 10px;
+	-webkit-transition:500ms all ease;
+}
+.myCart li:hover,.list ul li:hover{
+	box-shadow: 1px 3px 5px #d8d8d9;
+}
+.myCart li img,.list ul li img{
+	width:180px;
+}
+.imgwarp{
+	height:255px;
+	overflow:hidden;
+	margin-bottom:20px;
+}
+.list li.active{
+	border-color:#ff6699
+}
+.myCart p,.list p{
+	display:block;
+	text-align:center;
+}
+.shoppingname{
+	padding-bottom:5px;
+	color:rgb(102, 102, 102);
+	font-size:12px;
+}
+.money{
+	color:#ff6699
+}
+
+.btns{
+	height:50px;
+	width:100%;
+	position:relative;
+	margin-top: 30px;
+}
+.btns a{
+	display:inline-block;
+	padding:10px;
+	text-decoration:none;
+	background: #ff6699;
+	color:#fff;
+	border-radius:5px;
+	text-align:center;
+	margin:0 10px;
+}
+.btnbox{
+	display:inline-block;
+	margin:0 auto;
+	position:absolute;
+	left:50%;
+	-webkit-transform:translateX(-50%);
 }

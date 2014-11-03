@@ -30,7 +30,13 @@
 		oLogin.onclick = function(){	
 			var sName = $('#usrname').val();
 			var sPassword = $('#password').val();
-			 $.ajax({
+
+			if(!(sName && sPassword)){
+				reminder('用户名或密码不能为空');
+				return;
+			};
+
+			$.ajax({
 	             type: "POST",
 	             url: "http://localhost:3000/login",
 	             data: {
@@ -41,17 +47,24 @@
 	             success: function(data){
                     if(data.code == 0){
 	                	reminder('登陆成功!');
-	                	$('.loginBox').fadeOut(500);;
+	                	sessionStorage.userName = data.msg.name;
+	                	window.location.href = 'allList.html';
+	                	//showArticalList();
 	                }else{
-	                	reminder(data.msg.detail);
+	                	reminder(data.msg);
 	                };
                   }
-	         });
+	        });
 		};
 
 		oRegister.onclick = function(){
 			var sName = $('#usrname').val();
 			var sPassword = $('#password').val();
+
+			if(!(sName && sPassword)){
+				reminder('用户名或密码不能为空');
+				return;
+			};
 
 			$.ajax({
 	             type: "POST",
@@ -65,16 +78,122 @@
 	                if(data.code == 0){
 	                	reminder('注册成功，请登陆!');
 	                }else{
-	                	reminder(data.msg.detail);
+	                	reminder(data.msg);
 	                };
 	              }
 	         });
 		};
+
+		/*$('.list').bind('click',function(ev){
+
+			var oEvent = ev || event;
+			var oTarget = oEvent.target;
+			var oLi = $(oTarget).closest('li');
+
+			if(oLi.hasClass('active')){
+				oLi.removeClass('active');
+				
+			}else{
+				oLi.addClass('active');
+				
+			};
+		});
+
+		function showArticalList(){
+			$.ajax({
+	             type: "POST",
+	             url: "http://localhost:3000/getArticalList",
+	             data: {
+	             	
+	             },
+	             dataType: "json",
+	             success: function(data){
+	             	$('.list').css('display','block');
+	                if(data.code == 0){
+	                	$('.list ul').html('');
+	                	for(var i=0; i<data.msg.length; i++){
+	                		var htmlarr = [
+		                			'<li _id="'+data.msg[i].articlId+'">',
+										'<div class="imgwarp"><img src="img/'+(data.msg[i].articlId+1)+'.jpg"></div>',
+										'<p class="shoppingname">'+data.msg[i].name+'</p>',
+										'<p class="money">$'+data.msg[i].price+'</p>',
+									'</li>'
+	                		];
+	                		var html = htmlarr.join('');
+	                		$('.list ul').append(html);
+	                	};
+	                }else{
+	                	reminder(data.msg);
+	                };
+	              }
+	         });
+		};*/
+
+		/*$('#myCartBtn').click(function(){
+			$('.list').css('display','none');
+			$('.myCart').css('display','block');
+			$.ajax({
+	             type: "POST",
+	             url: "http://localhost:3000/getMyCart",
+	             data: {
+	             	
+	             },
+	             dataType: "json",
+	             success: function(data){
+	             	
+	                if(data.code == 0){
+	                	
+	                	alert(data.msg.length);
+	                }else{
+	                	reminder(data.msg);
+	                };
+	              }
+	         });
+		});*/
+		
+		/*$('#addBtn').click(function(){
+
+			if(!$('.list').length){
+				return;
+			};
+
+			if(!$('.list .active').length){
+				reminder('请先选择商品');
+				return;
+			};
+			var sendArr = [];
+			for(var i=0; i<$('.list .active').length; i++){
+				var parNum = parseInt($('.list .active').eq(i).attr('_id'));
+				sendArr.push(parNum);
+			};
+
+			$.ajax({
+	             type: "POST",
+	             url: "http://localhost:3000/storeMyCart",
+	             data: {
+	             	storeId:sendArr.join('&')
+	             },
+	             dataType: "json",
+	             success: function(data){
+	             	
+	                if(data.code == 0){
+	                	reminder('成功加入');
+	                }else{
+	                	reminder(data.msg);
+	                };
+	              }
+	         });
+		});*/
+
+		/*$('#showListBtn').click(function(){
+			$('.myCart').css('display','none');
+			showArticalList();
+		});*/
 	};
 	</script>
 </head>
 <body>	
-	<header>ShoppingCar</header>
+	<header>ShoppingCart</header>
 	<div id="loginBox" class="loginBox">
 		<div class="loginTitle">Login</div>
 		<div class="form">
