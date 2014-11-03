@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
+var user = require('../dataModel/users');
 
 router.post('/',function(req,res){
-	var userObj = mongoose.model('articlForm');
-	userObj.find(function(err,arr){
+	user.articlObj.find(function(err,arr){
 		if(err){
 			res.status(200).json({
 				code:1,
