@@ -1,14 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
-var userObj = mongoose.model('user');
+var user = require('../dataModel/users');
 
-/* GET home page. */
 router.post('/', function(req, res) {
 
 	var reqJson = req.body;
-
-	userObj.find({name:reqJson.name},function(err,arr){
+	user.userObj.find({name:reqJson.name},function(err,arr){
 		if(arr.length && arr[0].password == reqJson.password){
 			//登陆成功
 			req.session.userName = reqJson.name;
