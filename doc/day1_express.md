@@ -347,6 +347,80 @@ app.js里
 
 请查看[HTTP](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/demo/day1/http/readme.md)
 
+### 理解connect中间件
+#### 什么是Middleware？
+
+从实现上看，Middleware和Route Handler一样，本质上都是函数。Middleware这个函数接受express传入3个参数：req，res和next。调用的方法就是app.use(function(req,res,next){....});
+从处理过程上来看，middleware是处在请求Request和最终处理请求的Route Handler之间的一系列函数，它对于请求的内容在交由Route Handler之前做预先的处理。例如下面在请求到达route handler处理之前，经由Middleware的处理将请求的方法和地址打印在console中。
+
+```
+var app = express();
+
+app.use(function(req, res, next) {
+  console.log('%s %s', req.method, req.url);
+  next();
+});
+
+app.get('/', function(req, res, next) {
+  res.send('Hello World!');
+});
+
+app.get('/help', function(req, res, next) {
+  res.send('Nope.. nothing to see here');
+});
+```
+
+当然这只是一个非常简单的例子，实际上express提供的Middleware可以实现非常强大的处理功能，例如对于session的管理等等。在具体自己动手写一个Middleware之前，不妨先去找找已经成熟的Middleware，毕竟express的社区是非常活跃的。
+
+Middleware的参数
+
+```
+res, req
+```
+
+req和res分别代表请求和响应的对象的直接引用，这个概念非常重要，但是暂时且放在一边，先来看第3个参数next。
+
+```
+Next()
+```
+
+当调用next的时候，express将执行下一个Middleware。为什么不能像一般的js函数一样执行完毕就进入下一个Middleware，而要经由next来实现呢？
+这是因为Middleware中有可能会执行异步的操作（例如对数据库的读写等等），所以并非到达函数底部就代表Middleware执行的完成，而应该将异步的操作完成才视作整个Middleware处理的完成。由于express并不知道操作何时算是完成，因此必须等到next函数被显性的呼叫之后，才会进入下一个Middleware的处理。
+如果忘记调用next()，则会导致请求无法继续进行处理的错误。（当然，如果执行res.end又是另当别论的事情了）
+#### Middleware使用中容易出现的错误
+
+1、Middleware的顺序非常重要。
+Middleware是按照顺序调用，因此如果调用的顺序不当很可能出现错误。另外如果将Route handler与Middleware混用，会导致在middleware之上部分的route不会执行这个middleware的内容。例如下面的代码中，向根节点的get请求就不会经由Middleware进行处理。
+
+```
+app.get('/', function(req, res) { res.send('hello'); });
+
+app.use(function(req, res, next) {
+  next();
+});
+
+app.post('/', function(req, res) { res.send('bye'); });
+```
+
+另一个更为常见的例子是static file server这个Middleware，因为我们无法为每一个资源文件，例如js，css写单独的routing，这个Middleware可以实现到指定的文件夹下寻找对应的文件，一旦找到对应的文件则会返回这个文件。如果将这个操作放在所有session处理的Middleware之前，则返回的文件不会请求新的session，可能会导致cookie设置不上。因此习惯性的将这个Middleware放在所有的Middleware之后使用。
+
+2、忘记调用Next()
+
+3、Req和Res都是对对象的直接引用。任何添加、删除、覆盖的操作都会因为它们是对对象的引用而反映到下一个Middleware以及之后route handler中。
+
+
+#### 中间件写法
+```
+module.exports = function(root, options) {
+  options = options || {}
+  return function(req, res, next) {
+    var filepath = root + req.pathname;
+    send(filepath, function(err) {
+       if (err) next(err)
+    });
+  }
+}
+```
 
 ## 任务
 
@@ -892,11 +966,10 @@ http://www.expressjs.com.cn
 	}))
 	```
 
+## 参考
 
 
-
-
+- [Secure Your Node.js Webhooks with Middleware for Express](http://www.twilio.com/blog/2014/01/secure-your-nodejs-webhooks-with-middleware-for-express-middleware.html)
+- [node-config](https://github.com/lorenwest/node-config)
 
 ## 总结
-
-
