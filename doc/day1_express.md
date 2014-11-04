@@ -874,6 +874,8 @@ pm2 start app.js
 pm2 start app.js -i max  # Enable load-balancer and cluster features
 ```
 
+还有Monitoring dashboard呢，非常不错的样子
+
 ### 集群与负载
 
 - nginx
