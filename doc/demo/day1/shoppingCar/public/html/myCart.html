@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title></title> 
+	<link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+	<script type="text/javascript" src="../javascripts/jquery.js"></script>
+	<script>
+	$(function(){
+		function reminder(msg){
+			$('body').append('<div class="store_suc"></div>');
+			$('.store_suc').html(msg).css('display','block').stop().animate({opacity:0.5},200,function(){
+				var _this = this;
+				setTimeout(function(){
+					$(_this).animate({opacity:0},200,function(){
+						$(this).remove();
+					});
+				},1000);
+
+			});
+		};
+
+		$('.usrName').text(sessionStorage.userName);
+		
+		/*$.ajax({
+             type: "POST",
+             url: "http://localhost:3000/getMyCart",
+             data: {
+             	
+             },
+             dataType: "json",
+             success: function(data){
+                if(data.code == 0){
+                	alert(data.msg.length);
+                }else{
+                	reminder(data.msg);
+                };
+              }
+         });*/
+		$.post("http://localhost:3000/getMyCart", {},function (data, textStatus){    
+			var arr = [];
+       		for(var i=0; i<data.msg.length; i++){
+       			var arrhtml = [
+       					'<div class="item">'+
+							'<li>'+
+								'<div class="imgwarp"><img src="../img/'+(data.msg[i].articlId+1)+'.jpg"></div>'+
+								'<p class="shoppingname">'+data.msg[i].name+'</p>'+
+								'<p class="money">$'+data.msg[i].price+'</p>'+
+							'</li>'+
+							'<span class="count">x'+data.msg[i].count+'</span>'+
+						'</div>'
+       			];
+       			var htmlitem = arrhtml.join('');
+       			arr.push(htmlitem);
+       		};
+
+       		$('.myCart ul').html(arr.join(''));
+		}, "json");
+
+		/*$.ajax({
+             type: "POST",
+             url: "http://localhost:3000/getArticalList",
+             data: {
+             	
+             },
+             dataType: "json",
+             success: function(data){
+             	
+                if(data.code == 0){
+                	alert(data.msg.length);
+                }else{
+                	reminder(data.msg);
+                };
+              }
+         });*/
+
+	});
+	</script>
+</head>
+<body>	
+	<header>myShoppingCart</header>
+	<p class="usrMsg"><span>用户名:</span><span class="usrName"></span></p>
+	<div class="btns">
+		<div class="btnbox">
+			<a id="showListBtn" href="allList.html">返回商品列表</a>
+		</div>
+	</div>
+	<div class="myCart">
+		<ul>
+			
+		</ul>
+	</div>
+</body>
+</html>
