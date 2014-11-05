@@ -246,7 +246,7 @@ Entity  ：  由Model创建的实体，他的操作也会影响数据库
 7.我们甚至可以为此Schema创建方法
 
     //为Schema模型追加speak方法
-    PersonSchema.methos.speak = function(){
+    PersonSchema.methods.speak = function(){
       console.log('我的名字叫'+this.name);
     }
     var PersonModel = db.model('Person',PersonSchema);
