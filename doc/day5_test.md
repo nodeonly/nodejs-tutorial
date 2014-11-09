@@ -224,3 +224,13 @@ Please prefix your plugin component with `superagent-*`
 
 For superagent extensions such as couchdb and oauth visit the [wiki](https://github.com/visionmedia/superagent/wiki).
 
+
+
+
+## 另外的测试方法
+see https://github.com/mcollina/generify/blob/master/package.json
+
+
+  "test": "tape test.js | faucet"
+	
+	
