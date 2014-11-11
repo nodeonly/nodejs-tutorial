@@ -855,6 +855,27 @@ node-inspector是通过websocket方式来转向debug输入输出的。因此，�
 
 在生产环境使用pm2，forever
 
+- https://github.com/Unitech/PM2
+
+#### PM2
+
+Production process manager for Node.JS applications with a built-in load balancer.
+
+Install PM2
+
+```
+npm install pm2 -g
+```
+
+Start an application
+
+```
+pm2 start app.js
+pm2 start app.js -i max  # Enable load-balancer and cluster features
+```
+
+还有Monitoring dashboard呢，非常不错的样子
+
 ### 集群与负载
 
 - nginx
