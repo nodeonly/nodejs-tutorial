@@ -1,5 +1,7 @@
 # 测试
 
+http://www.scotchmedia.com/tutorials/express/authentication/2/02
+
 http://www.agilemobiledeveloper.com/2012/08/30/test-driven-node-js-development/
 
 在构建Node.js应用时，通常你会采用哪些工具进行测试呢？单元测试、BDD还是采用其他测试方法，比如框架和系统测试？
