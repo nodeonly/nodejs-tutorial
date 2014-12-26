@@ -1,5 +1,20 @@
 # 测试
 
+http://www.agilemobiledeveloper.com/2012/08/30/test-driven-node-js-development/
+
+在构建Node.js应用时，通常你会采用哪些工具进行测试呢？单元测试、BDD还是采用其他测试方法，比如框架和系统测试？
+
+Node.js拥有一组令人惊奇的强大且成熟的测试工具。比如Node.js内置的[Assert](http://nodejs.org/api/assert.html)允许你进行一些基础的XUnit风格测试。NodeUnit是Node.js的的单元测试框架，基于断言模块，简单的语法，功能强大的工具。Nodeunit node.js和浏览器可提供简单的异步单元测试。
+
+对于经常使用XUnit的开发人员来说，[NodeUnit](https://github.com/caolan/nodeunit)非常简单。
+
+[Mocha](https://github.com/visionmedia/mocha)是一款完整的测试工具，可安装在NPM和CI服务器之上，这款工具非常棒。
+Node.js测试工具（testing/bdd/mocking）源代码托管在GitHub上。在Cucumber中提供了行为驱动开发工具包括BDD测试工具[Cucumber.js](https://github.com/cucumber/cucumber-js)，还有Asynchronous BDD测试工具Vow。
+
+mocking数据中Mockito Style Mock Objects–[Mary Jane](https://github.com/dhasenan/maryjane/)是个不错的选择。对于JQuery迷而言，已经有很多开发者从QUnit移植到Node.js（[Node-Qunit](https://github.com/kof/node-qunit)）开发平台。Node.js应用中[Virile](http://masylum.github.com/testosterone/)测试也是非常不错的，同样的还有Headless全栈测试[Zombie.js](http://zombie.labnotes.org/)。
+
+
+
 ## tdd
 
 ## bdd
