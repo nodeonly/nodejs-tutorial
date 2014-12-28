@@ -16,6 +16,9 @@ MEAN
 - day5: [Test](https://github.com/nodeonly/nodejs-tutorial/blob/master/doc/day5_test.md)
 
 
+## Other
+
+http://ponyfoo.com/articles/teach-yourself-nodejs-in-10-steps
 
 ## Contributing
 
