@@ -986,7 +986,7 @@ http://www.expressjs.com.cn
 	  secret: 'keyboard cat'
 	}))
 	```
-
+- 理解什么是 Event Loop？http://www.ruanyifeng.com/blog/2013/10/event_loop.html
 ## 参考
 
 
